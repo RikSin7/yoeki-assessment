@@ -3,16 +3,17 @@ import { submitContactForm } from "./contactService";
 import type { ContactFormData, ContactState } from "./contactTypes";
 
 const initialState: ContactState = {
-  loading: false,
-  success: false,
+  status: "idle",
   error: null,
+  lastSubmission: null,
 };
 
 export const submitContact = createAsyncThunk(
   "contact/submit",
   async (formData: ContactFormData, { rejectWithValue }) => {
     try {
-      return await submitContactForm(formData);
+      const response = await submitContactForm(formData);
+      return response;
     } catch (error: unknown) {
       if (error instanceof Error) {
         return rejectWithValue(error.message);
@@ -26,29 +27,27 @@ const contactSlice = createSlice({
   name: "contact",
   initialState,
   reducers: {
-    resetContactState: (state) => {
-      state.loading = false;
-      state.success = false;
+    resetFormStatus: (state) => {
+      state.status = "idle";
       state.error = null;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(submitContact.pending, (state) => {
-        state.loading = true;
+        state.status = "loading";
         state.error = null;
       })
-      .addCase(submitContact.fulfilled, (state) => {
-        state.loading = false;
-        state.success = true;
+      .addCase(submitContact.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.lastSubmission = action.meta.arg; // The original form data
       })
       .addCase(submitContact.rejected, (state, action) => {
-        state.loading = false;
+        state.status = "failed";
         state.error = action.payload as string;
       });
   },
 });
 
-export const { resetContactState } = contactSlice.actions;
-
+export const { resetFormStatus } = contactSlice.actions;
 export default contactSlice.reducer;

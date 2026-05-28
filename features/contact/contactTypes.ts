@@ -6,7 +6,7 @@ export interface ContactFormData {
 }
 
 export interface ContactState {
-  loading: boolean;
-  success: boolean;
+  status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
+  lastSubmission: ContactFormData | null;
 }
