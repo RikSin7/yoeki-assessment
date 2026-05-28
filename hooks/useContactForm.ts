@@ -3,32 +3,33 @@ import { useAppDispatch, useAppSelector } from "./useRedux";
 import { submitContact, resetFormStatus } from "@/features/contact/contactSlice";
 import type { ContactFormData } from "@/features/contact/contactTypes";
 
-interface FormErrors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
+type FormErrors = Partial<Record<keyof ContactFormData, string>>;
+
+const initialFormData: ContactFormData = {
+  name: "",
+  location: "",
+  email: "",
+  phone: "",
+  jobTitle: "",
+  organization: "",
+  projectDate: "",
+  requirement: "",
+  hearAboutUs: "",
+  consent: false,
+};
 
 export function useContactForm() {
   const dispatch = useAppDispatch();
   const { status, error } = useAppSelector((state) => state.contact);
 
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-  });
-
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
 
-  // Validate on the client side before even dispatching
   const validate = useCallback((): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.location.trim()) newErrors.location = "Location is required";
 
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
@@ -36,22 +37,38 @@ export function useContactForm() {
       newErrors.email = "Please enter a valid email";
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\+?[\d\s()-]{7,15}$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number";
     }
+
+    if (!formData.organization.trim()) newErrors.organization = "Organization is required";
+    if (!formData.projectDate) newErrors.projectDate = "Please select a project start date";
+    if (!formData.requirement.trim()) {
+      newErrors.requirement = "Please describe your requirement";
+    } else if (formData.requirement.trim().length < 10) {
+      newErrors.requirement = "Please provide at least 10 characters";
+    }
+
+    if (!formData.hearAboutUs) newErrors.hearAboutUs = "Please select an option";
+    if (!formData.consent) newErrors.consent = "You must accept the privacy policy";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }, [formData]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear the error for this field when user starts typing
+    const { name, value, type } = e.target;
+    const checked = type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -65,7 +82,7 @@ export function useContactForm() {
   };
 
   const resetForm = useCallback(() => {
-    setFormData({ name: "", email: "", company: "", message: "" });
+    setFormData(initialFormData);
     setErrors({});
     dispatch(resetFormStatus());
   }, [dispatch]);

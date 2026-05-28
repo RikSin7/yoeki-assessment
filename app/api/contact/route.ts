@@ -1,6 +1,9 @@
 export async function POST(req: Request) {
   const body = await req.json();
 
+  console.log("API HIT:", body);
+
+
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   if (!body.email) {

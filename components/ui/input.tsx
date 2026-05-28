@@ -1,21 +1,25 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import React from 'react';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+  isTextArea?: boolean;
+}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+export const Input = ({ isTextArea, className = '', ...props }: InputProps) => {
+  const baseStyles = "w-full bg-[#111111] text-white placeholder-zinc-500 p-4 rounded-sm outline-none focus:ring-1 focus:ring-[#EF7D25] transition-all text-sm";
+
+  if (isTextArea) {
     return (
-      <input
-        type={type}
-        className={cn("flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm", className)}
-        ref={ref}
-        {...props}
+      <textarea
+        className={`${baseStyles} resize-y min-h-[120px] ${className}`}
+        {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
       />
-    )
+    );
   }
-)
-Input.displayName = "Input"
 
-export { Input }
+  return (
+    <input
+      className={`${baseStyles} ${className}`}
+      {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
+    />
+  );
+};
