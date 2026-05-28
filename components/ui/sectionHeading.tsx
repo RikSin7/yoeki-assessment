@@ -9,8 +9,14 @@ interface SectionHeadingProps {
 export function SectionHeading({ title, subtitle, className }: SectionHeadingProps) {
   return (
     <div className={cn("flex flex-col items-center justify-center text-center", className)}>
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
-      {subtitle && <p className="mt-4 text-lg text-muted-foreground">{subtitle}</p>}
+      <h2 className="text-white text-3xl md:text-5xl font-bold tracking-tight mb-4">
+        {title}
+      </h2>
+      {subtitle &&
+        <p className="text-gray-300 text-sm md:text-base">
+          {subtitle}
+        </p>
+      }
     </div>
   )
 }

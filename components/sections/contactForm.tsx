@@ -5,6 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 import { useContactForm } from "@/hooks/useContactForm";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { SectionHeading } from "../ui/sectionHeading";
 
 export default function ContactForm() {
     const {
@@ -43,17 +44,14 @@ export default function ContactForm() {
 
     // ---------- FORM STATE ----------
     return (
-        <section className="bg-black min-h-screen py-20 px-4 flex justify-center font-sans">
+        <section className="bg-black min-h-screen px-4 flex justify-center font-sans">
             <div className="max-w-4xl w-full">
                 {/* Section Heading */}
-                <div className="text-center mb-12">
-                    <h2 className="text-white text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                        Infinite Possibilities Start with Indium
-                    </h2>
-                    <p className="text-gray-300 text-sm md:text-base">
-                        Have a question? Connect with our team by filling out the form below.
-                    </p>
-                </div>
+                <SectionHeading
+                    title="Infinite Possibilities Start with Indium"
+                    subtitle="Have a question? Connect with our team by filling out the form below."
+                    className="mb-12"
+                />
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Top Inputs Grid */}
