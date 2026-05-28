@@ -1,12 +1,7 @@
-import axios from '@/lib/axios';
+import { api } from "@/lib/axios";
+import type { ContactFormData } from "./contactTypes";
 
-const submitContactForm = async (contactData: any) => {
-  const response = await axios.post('/api/contact', contactData);
+export const submitContactForm = async (formData: ContactFormData) => {
+  const response = await api.post("/contact", formData);
   return response.data;
 };
-
-const contactService = {
-  submitContactForm,
-};
-
-export default contactService;
