@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
-import AnimatedN from "../ui/animatedN";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Image from "next/image";
 
 const logos = [
@@ -14,55 +14,87 @@ const logos = [
 ];
 
 export default function Marquee() {
+  const containerRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
+  const nScale = useTransform(smoothProgress, [0, 0.15, 0.7, 1], [0.05, 1, 1, 0.8]);
+  const nOpacity = useTransform(smoothProgress, [0, 0.05, 0.8, 1], [0, 1, 1, 0]);
+  const marqueeOpacity = useTransform(smoothProgress, [0, 0.1, 0.2, 0.8, 1], [0, 0, 1, 1, 0]);
+  const marqueeY = useTransform(smoothProgress, [0, 0.1, 0.2], [40, 40, 0]);
+
   return (
-    <section className="relative bg-black overflow-hidden py-24 md:py-32">
-      <div className="max-w-[1600px] mx-auto px-6">
-        {/* Animated N */}
-        <div className="flex justify-center">
-          <AnimatedN />
-        </div>
+    <section ref={containerRef} className="relative h-[250vh] bg-black">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden border-b border-white/[0.05]">
 
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-          }}
-          viewport={{ once: true }}
-          className="mt-10 text-center text-white text-4xl font-bold tracking-tight leading-none"
-        >
-          Brands that believe in us
-        </motion.h2>
+        <div className="max-w-[1600px] w-full mx-auto px-6 flex flex-col items-center justify-center">
 
-        {/* Logos */}
-        <div className="mt-20 overflow-hidden">
+          {/* Animated N */}
           <motion.div
-            animate={{
-              x: ["0%", "-50%"],
-            }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="flex w-max gap-10 md:gap-20"
+            style={{ scale: nScale, opacity: nOpacity }}
+            className="relative flex items-center justify-center h-[300px]"
           >
-            {[...logos, ...logos].map((logo, index) => (
-              <div
-                key={index}
-                className="relative shrink-0 h-[60px] flex items-center justify-center overflow-hidden"
-              >
-                <Image
-                  src={logo}
-                  alt="Logo"
-                  width={250}
-                  height={250}
-                  className=" object-contain opacity-40 hover:opacity-100 transition-opacity duration-500"
-                />
-              </div>
-            ))}
+            {/* Glow */}
+            <div className="absolute w-[240px] h-[240px] rounded-full bg-[#FB851E]/10 blur-3xl" />
+
+            {/* Letter with continuous floating bounce applied on top of the scroll scale */}
+            <motion.h2
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="text-[180px] md:text-[280px] lg:text-[360px] font-black leading-none tracking-[-0.08em] text-[#FB851E] opacity-90 select-none z-10"
+              style={{ fontFamily: "Mona Sans" }}
+            >
+              N
+            </motion.h2>
           </motion.div>
+
+          {/* Marquee Container (Scroll-Linked Reveal, Infinite Horizontal Loop) */}
+          <motion.div
+            style={{ opacity: marqueeOpacity, y: marqueeY }}
+            className="w-full mt-4"
+          >
+            <h2 className="text-center text-white text-3xl md:text-4xl font-bold tracking-tight leading-none mb-16">
+              Brands that believe in us
+            </h2>
+
+            <div className="relative overflow-hidden w-full">
+              {/* Gradient Fades for a premium look */}
+              <div className="absolute left-0 top-0 w-24 md:w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 w-24 md:w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+              {/* Infinite Logo Track */}
+              <motion.div
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="flex w-max gap-10 md:gap-20"
+              >
+                {[...logos, ...logos].map((logo, index) => (
+                  <div
+                    key={index}
+                    className="relative shrink-0 h-[60px] flex items-center justify-center overflow-hidden"
+                  >
+                    <Image
+                      src={logo}
+                      alt="Logo"
+                      width={250}
+                      height={250}
+                      className="object-contain filter opacity-60 hover:opacity-100 hover:brightness-100 transition-all duration-500 cursor-pointer"
+                    />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
