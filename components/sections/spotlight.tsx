@@ -87,7 +87,7 @@ export default function Spotlight() {
   };
 
   return (
-    <section className="bg-black py-24 md:py-32 border-b border-white/[0.05] overflow-hidden">
+    <section className="bg-black mx-auto max-w-[1440px] px-6 md:px-12 py-24 md:py-32 border-b border-white/[0.05] overflow-hidden">
 
         {/* Section Heading */}
         <motion.h2

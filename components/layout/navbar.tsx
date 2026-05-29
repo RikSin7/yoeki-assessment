@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
-import { useMediaQuery } from '@/hooks/useMediaQuery'; 
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -19,10 +19,8 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
-  // Custom Hook detecting if above 1200px
   const isDesktop = useMediaQuery('(min-width: 1200px)');
 
-  // Safety trigger: If user resizes window to desktop while mobile menu is open, close it.
   useEffect(() => {
     if (isDesktop && isMobileMenuOpen) {
       //eslint-disable-next-line
@@ -30,7 +28,6 @@ export default function Navbar() {
     }
   }, [isDesktop, isMobileMenuOpen]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -42,14 +39,20 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-full max-w-[1440px] mx-auto h-22 bg-[#101010] flex items-center justify-between px-6 md:px-12 fixed top-0 left-0 right-0 z-40">
+      <nav className="w-full h-22 bg-[#101010] flex items-center justify-between px-6 md:px-22 mx-auto fixed top-0 left-0 right-0 z-40">
 
         {/* 1. Logo */}
         <div className="shrink-0 cursor-pointer flex items-center" onClick={() => router.push("/")}>
-          <Image src="./images/logo.svg" alt="Yoeki Logo" width={180} height={180} />
+          <Image
+            src="/images/logo.svg"
+            alt="Yoeki Logo"
+            width={180}
+            height={180}
+            className="w-24 md:w-36 min-[1200px]:w-[180px] h-auto transition-all"
+          />
         </div>
 
-        {/* 2. Desktop Navigation (Hidden below 1200px) */}
+        {/* 2. Desktop Navigation */}
         <div className="hidden min-[1200px]:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {NAV_ITEMS.map((item) => (
             <div key={item} className="flex items-center gap-1 cursor-pointer group">
@@ -61,7 +64,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* 3. Right Action Area (Button always visible, Hamburger below 1200px) */}
+        {/* 3. Right Action Area */}
         <div className="flex items-center gap-4">
           <Button onClick={() => router.push('/contact')}>Contact Us</Button>
 
@@ -79,7 +82,6 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop Blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -88,7 +90,6 @@ export default function Navbar() {
               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 min-[1200px]:hidden"
             />
 
-            {/* Sidebar Panel */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -96,7 +97,6 @@ export default function Navbar() {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 w-[85%] max-w-sm h-full bg-[#1a1a1a] z-50 min-[1200px]:hidden shadow-2xl flex flex-col"
             >
-              {/* Close Button Header */}
               <div className="h-24 px-6 flex items-center justify-end border-b border-white/5">
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -106,7 +106,6 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {/* Mobile Links */}
               <div className="flex flex-col py-6 overflow-y-auto">
                 {NAV_ITEMS.map((item) => (
                   <div
@@ -126,4 +125,4 @@ export default function Navbar() {
       </AnimatePresence>
     </>
   );
-};
+}
