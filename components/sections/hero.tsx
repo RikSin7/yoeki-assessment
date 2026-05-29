@@ -41,7 +41,7 @@ export default function Hero() {
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mb-20 text-center font-bold tracking-[-0.04em] leading-none text-white text-4xl md:text-5xl font-sans"
+          className="mb-20 text-center font-bold tracking-[-0.04em] leading-none text-white text-5xl font-sans md:w-auto max-w-[80vw]"
         >
           An{" "}
           <span

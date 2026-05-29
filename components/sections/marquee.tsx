@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Image from "next/image";
+import { DotMatrixN } from "../ui/dotMatrixN";
 
 const logos = [
   "/images/li-fung.svg",
@@ -39,25 +40,19 @@ export default function Marquee() {
         <div className="max-w-[1600px] w-full mx-auto px-6 flex flex-col items-center justify-center">
 
           {/* Animated N */}
-          <motion.div
-            style={{ scale: nScale, opacity: nOpacity }}
-            className="relative flex items-center justify-center h-[300px]"
-          >
-            {/* Glow */}
-            <div className="absolute w-[240px] h-[240px] rounded-full bg-[#FB851E]/10 blur-3xl" />
-
-            {/* Letter with continuous floating bounce applied on top of the scroll scale */}
-            <motion.h2
+            <motion.div
+              style={{ scale: nScale, opacity: nOpacity }}
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="text-[180px] md:text-[280px] lg:text-[360px] font-black leading-none tracking-[-0.08em] text-[#FB851E] opacity-90 select-none z-10"
-              style={{ fontFamily: "Mona Sans" }}
+              className="relative flex items-center justify-center h-[280px] md:h-[360px] w-[280px] md:w-[360px] mx-auto z-10"
             >
-              N
-            </motion.h2>
-          </motion.div>
+              <div className="absolute w-[200px] h-[200px] rounded-full bg-[#FB851E]/15 blur-3xl -z-10" />
 
-          {/* Marquee Container (Scroll-Linked Reveal, Infinite Horizontal Loop) */}
+              {/* The Canvas  */}
+              <DotMatrixN />
+            </motion.div>
+
+          {/* Marquee Container */}
           <motion.div
             style={{ opacity: marqueeOpacity, y: marqueeY }}
             className="w-full mt-4"
@@ -67,7 +62,7 @@ export default function Marquee() {
             </h2>
 
             <div className="relative overflow-hidden w-full">
-              {/* Gradient Fades for a premium look */}
+              {/* Gradient Fades  */}
               <div className="absolute left-0 top-0 w-24 md:w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 top-0 w-24 md:w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
