@@ -23,7 +23,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen bg-black overflow-hidden"
+      className="relative min-h-[calc(100vh-6rem)] bg-black overflow-hidden"
     >
       <motion.div
         style={{
@@ -31,7 +31,7 @@ export default function Hero() {
           scale,
           filter: blur,
         }}
-        className="sticky top-0 flex flex-col items-center justify-center"
+        className="sticky top-24 flex flex-col items-center justify-center h-[calc(100vh-6rem)]"
       >
         {/* Heading */}
         <motion.h1

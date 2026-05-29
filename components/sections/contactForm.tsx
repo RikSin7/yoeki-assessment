@@ -21,7 +21,7 @@ export default function ContactForm() {
     // ---------- SUCCESS STATE ----------
     if (status === "succeeded") {
         return (
-            <section className="bg-black min-h-screen py-20 px-4 flex justify-center font-sans">
+            <section className="bg-black min-h-[calc(100vh-6rem)] py-20 px-4 flex justify-center font-sans">
                 <div className="max-w-2xl w-full text-center">
                     <motion.div
                         initial={{ scale: 0 }}
@@ -44,7 +44,7 @@ export default function ContactForm() {
 
     // ---------- FORM STATE ----------
     return (
-        <section className="bg-black min-h-screen px-4 flex justify-center font-sans">
+        <section className="bg-black min-h-[calc(100vh-6rem)] px-4 py-16 flex justify-center font-sans">
             <div className="max-w-4xl w-full">
                 {/* Section Heading */}
                 <SectionHeading

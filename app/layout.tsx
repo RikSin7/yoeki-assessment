@@ -36,9 +36,11 @@ export default function RootLayout({
     >
       <body className="bg-black text-white">
         <ReduxProvider>
-          <Navbar />
-          <main className="pt-40 bg-black">{children}</main>
-          <Footer />
+          <div className="mx-auto max-w-[1440px] px-6 md:px-12 w-full min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-1 pt-20 bg-black flex flex-col">{children}</main>
+            <Footer />
+          </div>
         </ReduxProvider>
       </body>
     </html>

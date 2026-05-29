@@ -5,12 +5,12 @@ import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Image from "next/image";
 
 const logos = [
-  "./images/li-fung.svg",
-  "./images/toyota.svg",
-  "./images/siemens.svg",
-  "./images/forbes.svg",
-  "./images/convey.svg",
-  "./images/shark-ninja.svg",
+  "/images/li-fung.svg",
+  "/images/toyota.svg",
+  "/images/siemens.svg",
+  "/images/forbes.svg",
+  "/images/convey.svg",
+  "/images/shark-ninja.svg",
 ];
 
 export default function Marquee() {
