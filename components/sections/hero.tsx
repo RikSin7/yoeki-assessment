@@ -13,13 +13,13 @@ export default function Hero() {
 
   // Scroll animations
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.88]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.1]);
   const blur = useTransform(
     scrollYProgress,
     [0, 1],
-    ["blur(0px)", "blur(10px)"]
+    ["blur(0px)", "blur(50px)"]
   );
-
+ 
   return (
     <section
       ref={containerRef}
@@ -41,17 +41,7 @@ export default function Hero() {
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="
-            mb-20
-            text-center
-            font-bold
-            tracking-[-0.04em]
-            leading-none
-            text-white
-            text-4xl
-            md:text-5xl
-            font-sans
-          "
+          className="mb-20 text-center font-bold tracking-[-0.04em] leading-none text-white text-4xl md:text-5xl font-sans"
         >
           An{" "}
           <span
@@ -64,28 +54,14 @@ export default function Hero() {
 
         {/* Video Wrapper */}
         <div
-          className="
-            relative
-            w-full
-            max-w-3xl
-            flex
-            items-center
-            justify-center
-          "
+          className="relative w-full max-w-3xl flex items-center justify-center"
         >
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="
-              w-full
-              h-full
-              object-contain
-              scale-[1.15]
-              pointer-events-none
-              select-none
-            "
+            className="w-full h-full object-contain scale-[1.15] pointer-events-none select-none"
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>

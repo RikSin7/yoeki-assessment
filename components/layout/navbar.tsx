@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { useMediaQuery } from '@/hooks/useMediaQuery'; 
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const NAV_ITEMS = [
   'Who We Are',
@@ -45,9 +46,7 @@ export default function Navbar() {
 
         {/* 1. Logo */}
         <div className="shrink-0 cursor-pointer flex items-center" onClick={() => router.push("/")}>
-          <span className="text-white text-2xl md:text-3xl font-bold tracking-wider">
-            IN<span className="text-[#EF7D25]">D</span>IUM
-          </span>
+          <Image src="./images/logo.svg" alt="Yoeki Logo" width={180} height={180} />
         </div>
 
         {/* 2. Desktop Navigation (Hidden below 1200px) */}
