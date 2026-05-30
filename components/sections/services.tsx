@@ -64,6 +64,7 @@ export default function Services() {
 
   return (
     <section className="bg-white">
+      {/* Mobile Pre-Scroll Header */}
       <div className="lg:hidden max-w-[1600px] mx-auto px-6 w-full pt-20 pb-8 text-center shrink-0">
         <h4 className="text-[#EF7D25] font-semibold text-sm uppercase tracking-wider mb-2">
           Services
@@ -78,113 +79,125 @@ export default function Services() {
 
       <div ref={sectionRef} className="relative h-[400vh]">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-4 lg:py-16">
-          <div className="hidden lg:block max-w-[1600px] mx-auto px-6 w-full mb-12 text-center shrink-0">
-            <h4 className="text-[#EF7D25] font-semibold text-base uppercase tracking-wider mb-2">
-              Services
-            </h4>
-            <h2 className="text-5xl font-bold text-black tracking-tight mb-3">
-              Crafting success through our expertise in AI
-            </h2>
-            <p className="text-gray-600 text-base max-w-3xl mx-auto">
-              AI-infused engineering that speaks your language—innovative, efficient, and built to solve real problems.
-            </p>
-          </div>
 
-          <div className="max-w-[1600px] mx-auto w-full flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-16 items-center lg:px-6">
-            <div className="w-full h-[240px] md:h-[350px] lg:h-[400px] px-4 lg:px-0 flex items-center justify-center perspective-[1500px] relative shrink-0 lg:pl-10 lg:order-2">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  variants={imageVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-                  className="relative w-full max-w-[500px] h-full lg:aspect-square flex items-center justify-center rounded-2xl overflow-hidden lg:shadow-2xl"
-                >
-                  <Image
-                    src={SERVICES_DATA[activeIndex].image}
-                    alt={SERVICES_DATA[activeIndex].title}
-                    fill
-                    unoptimized
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent" />
-                </motion.div>
-              </AnimatePresence>
+          {/* Spring-Up Entry Animation Wrapper */}
+          <motion.div
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ type: 'spring', stiffness: 80, damping: 15 }}
+            className="w-full flex flex-col h-full lg:h-auto justify-center"
+          >
+            <div className="hidden lg:block max-w-[1600px] mx-auto px-6 lg:px-12 w-full mb-12 text-center shrink-0">
+              <h4 className="text-[#EF7D25] font-semibold text-base uppercase tracking-wider mb-2">
+                Services
+              </h4>
+              <h2 className="text-5xl font-bold text-black tracking-tight mb-3">
+                Crafting success through our expertise in AI
+              </h2>
+              <p className="text-gray-600 text-base max-w-3xl mx-auto">
+                AI-infused engineering that speaks your language—innovative, efficient, and built to solve real problems.
+              </p>
             </div>
 
-            <div className="w-full flex flex-col relative z-10 px-4 lg:px-0 lg:pr-10 lg:order-1">
-              {SERVICES_DATA.map((service, index) => {
-                const isActive = activeIndex === index;
-                const isNext = index === activeIndex + 1;
-                const showOnMobile = isActive || isNext;
+            <div className="max-w-[1600px] mx-auto w-full flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-16 items-center lg:px-12">
 
-                return (
-                  <div key={service.id} className={`relative cursor-pointer group ${showOnMobile ? 'block' : 'hidden lg:block'}`}>
-                    {isActive && (
+              <div className="w-full h-[240px] md:h-[350px] lg:h-[400px] px-4 lg:px-0 flex items-center justify-center perspective-[1500px] relative shrink-0 lg:pl-10 lg:order-2">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeIndex}
+                    variants={imageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+                    className="relative w-full max-w-[500px] h-full lg:aspect-square flex items-center justify-center rounded-2xl overflow-hidden lg:shadow-2xl"
+                  >
+                    <Image
+                      src={SERVICES_DATA[activeIndex].image}
+                      alt={SERVICES_DATA[activeIndex].title}
+                      fill
+                      unoptimized
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <div className="w-full flex flex-col relative z-10 px-4 lg:px-0 lg:pr-10 lg:order-1">
+                {SERVICES_DATA.map((service, index) => {
+                  const isActive = activeIndex === index;
+                  const isNext = index === activeIndex + 1;
+                  const showOnMobile = isActive || isNext;
+
+                  return (
+                    <div key={service.id} className={`relative cursor-pointer group ${showOnMobile ? 'block' : 'hidden lg:block'}`}>
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeServiceBg"
+                          className="absolute inset-0 lg:inset-auto lg:top-0 lg:bottom-0 lg:left-auto lg:right-0 w-full lg:w-[100vw] bg-[#111111] z-0 rounded-2xl lg:rounded-none transform-gpu"
+                          initial={false}
+                          transition={{ type: 'spring', stiffness: 250, damping: 30 }}
+                        />
+                      )}
+
                       <motion.div
-                        layoutId="activeServiceBg"
-                        className="absolute inset-0 lg:inset-auto lg:top-0 lg:bottom-0 lg:left-auto lg:right-0 w-full lg:w-[100vw] bg-[#111111] z-0 rounded-2xl lg:rounded-none"
-                        initial={false}
-                        transition={{ type: 'spring', stiffness: 250, damping: 30 }}
-                      />
-                    )}
+                        className="relative z-10 py-5 px-6 md:px-8 flex flex-col"
+                        animate={{ color: isActive ? '#ffffff' : '#000000' }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-4 md:gap-10">
+                            <span className={`text-xl md:text-3xl font-bold transition-colors duration-300 ${isActive ? 'text-[#EF7D25]' : 'text-gray-400 group-hover:text-gray-600'}`}>
+                              {service.id}
+                            </span>
+                            <h3 className="text-xl md:text-3xl font-bold tracking-tight">
+                              {service.title}
+                            </h3>
+                          </div>
 
-                    <motion.div
-                      className="relative z-10 py-5 px-6 md:px-8 flex flex-col"
-                      animate={{ color: isActive ? '#ffffff' : '#000000' }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4 md:gap-10">
-                          <span className={`text-xl md:text-3xl font-bold transition-colors duration-300 ${isActive ? 'text-[#EF7D25]' : 'text-gray-400 group-hover:text-gray-600'}`}>
-                            {service.id}
-                          </span>
-                          <h3 className="text-xl md:text-3xl font-bold tracking-tight">
-                            {service.title}
-                          </h3>
+                          <AnimatePresence>
+                            {isActive && isDesktop && (
+                              <motion.div
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -10 }}
+                                className="hidden lg:flex items-center gap-2 text-sm font-medium hover:text-[#EF7D25] transition-colors"
+                              >
+                                Read More <ArrowRight className="w-4 h-4" />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
 
                         <AnimatePresence>
-                          {isActive && isDesktop && (
+                          {isActive && (
                             <motion.div
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              exit={{ opacity: 0, x: -10 }}
-                              className="hidden lg:flex items-center gap-2 text-sm font-medium hover:text-[#EF7D25] transition-colors"
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                              className="overflow-hidden"
                             >
-                              Read More <ArrowRight className="w-4 h-4" />
+                              <div className="pt-3 md:pt-4 pl-[3rem] md:pl-[4.5rem] pr-4 md:pr-0 pb-1">
+                                <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg">
+                                  {service.description}
+                                </p>
+                              </div>
                             </motion.div>
                           )}
                         </AnimatePresence>
-                      </div>
+                      </motion.div>
 
-                      <AnimatePresence>
-                        {isActive && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="pt-3 md:pt-4 pl-[3rem] md:pl-[4.5rem] pr-4 md:pr-0 pb-1">
-                              <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg">
-                                {service.description}
-                              </p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-
-                    {!isActive && <div className="absolute bottom-0 left-6 lg:left-4 right-6 lg:right-4 h-[1px] bg-gray-200 z-10 transition-colors group-hover:bg-gray-300" />}
-                  </div>
-                );
-              })}
+                      {!isActive && <div className="absolute bottom-0 left-6 lg:left-4 right-6 lg:right-4 h-[1px] bg-gray-200 z-10 transition-colors group-hover:bg-gray-300" />}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+
+          </motion.div>
         </div>
       </div>
     </section>
