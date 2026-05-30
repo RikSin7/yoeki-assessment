@@ -87,14 +87,14 @@ export default function Spotlight() {
   };
 
   return (
-    <section className="bg-black mx-auto max-w-[1440px] px-6 md:px-12 py-24 md:py-32 border-b border-white/[0.05] overflow-hidden">
-
+    <section className="w-full bg-black py-24 md:py-32 border-b border-white/[0.05] overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Section Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-white text-3xl md:text-5xl font-bold tracking-tight mb-16"
+          className="text-center text-white text-app-4xl font-bold tracking-tight mb-16"
         >
           Spotlight
         </motion.h2>
@@ -126,12 +126,12 @@ export default function Spotlight() {
                 </div>
 
                 {/* Text Content */}
-                <h3 className="text-white text-xl md:text-2xl font-semibold leading-snug tracking-tight mb-4 group-hover:text-gray-300 transition-colors line-clamp-3">
+                <h3 className="text-white text-app-xl md:text-app-2xl font-semibold leading-snug tracking-tight mb-4 group-hover:text-gray-300 transition-colors line-clamp-3">
                   {item.title}
                 </h3>
 
                 {/* CTA  */}
-                <div className="mt-auto flex items-center gap-2 text-[#EF7D25] text-sm md:text-base font-medium">
+                <div className="mt-auto flex items-center gap-2 text-primary text-app-sm md:text-app-base font-medium">
                   {item.cta}
                   <svg
                     className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"
@@ -167,7 +167,7 @@ export default function Spotlight() {
             <ArrowRight className="w-6 h-6 text-black" />
           </button>
         </div>
-
+      </div>
     </section>
   );
 }

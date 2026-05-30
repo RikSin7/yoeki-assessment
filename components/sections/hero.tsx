@@ -41,11 +41,11 @@ export default function Hero() {
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mb-20 text-center font-bold tracking-[-0.04em] leading-none text-white text-5xl font-sans md:w-auto max-w-[80vw]"
+          className="mb-20 text-center font-bold tracking-[-0.04em] leading-none text-white text-app-5xl md:w-auto max-w-[90vw]"
         >
           An{" "}
           <span
-            className="text-[#FB851E]"
+            className="text-primary"
           >
             AI
           </span>{" "}
@@ -61,7 +61,7 @@ export default function Hero() {
             muted
             loop
             playsInline
-            className="w-full h-full object-contain scale-[1.15] pointer-events-none select-none"
+            className="w-full h-full object-contain md:scale-[1.15] scale-[1.20] pointer-events-none select-none"
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>

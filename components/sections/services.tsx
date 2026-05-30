@@ -63,16 +63,16 @@ export default function Services() {
   };
 
   return (
-    <section className="bg-white">
+    <section className="bg-white w-full">
       {/* Mobile Pre-Scroll Header */}
-      <div className="lg:hidden max-w-[1600px] mx-auto px-6 w-full pt-20 pb-8 text-center shrink-0">
-        <h4 className="text-[#EF7D25] font-semibold text-sm uppercase tracking-wider mb-2">
+      <div className="lg:hidden max-w-[1440px] mx-auto px-6 md:px-12 w-full pt-20 pb-8 text-center shrink-0">
+        <h4 className="text-primary font-semibold text-app-sm uppercase tracking-wider mb-2">
           Services
         </h4>
-        <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-3">
+        <h2 className="text-app-3xl md:text-app-4xl font-bold text-black tracking-tight mb-3">
           Crafting success through our expertise in AI
         </h2>
-        <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto">
+        <p className="text-gray-600 text-app-sm md:text-app-base max-w-3xl mx-auto">
           AI-infused engineering that speaks your language—innovative, efficient, and built to solve real problems.
         </p>
       </div>
@@ -88,19 +88,19 @@ export default function Services() {
             transition={{ type: 'spring', stiffness: 80, damping: 15 }}
             className="w-full flex flex-col h-full lg:h-auto justify-center"
           >
-            <div className="hidden lg:block max-w-[1600px] mx-auto px-6 lg:px-12 w-full mb-12 text-center shrink-0">
-              <h4 className="text-[#EF7D25] font-semibold text-base uppercase tracking-wider mb-2">
+            <div className="hidden lg:block max-w-[1440px] mx-auto px-6 lg:px-12 w-full mb-12 text-center shrink-0">
+              <h4 className="text-primary font-semibold text-app-base uppercase tracking-wider mb-2">
                 Services
               </h4>
-              <h2 className="text-5xl font-bold text-black tracking-tight mb-3">
+              <h2 className="text-app-4xl font-bold text-black tracking-tight mb-3">
                 Crafting success through our expertise in AI
               </h2>
-              <p className="text-gray-600 text-base max-w-3xl mx-auto">
+              <p className="text-gray-600 text-app-base max-w-3xl mx-auto">
                 AI-infused engineering that speaks your language—innovative, efficient, and built to solve real problems.
               </p>
             </div>
 
-            <div className="max-w-[1600px] mx-auto w-full flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-16 items-center lg:px-12">
+            <div className="max-w-[1440px] mx-auto w-full flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-16 items-center lg:px-12">
 
               <div className="w-full h-[240px] md:h-[350px] lg:h-[400px] px-4 lg:px-0 flex items-center justify-center perspective-[1500px] relative shrink-0 lg:pl-10 lg:order-2">
                 <AnimatePresence mode="wait">
@@ -149,10 +149,10 @@ export default function Services() {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-4 md:gap-10">
-                            <span className={`text-xl md:text-3xl font-bold transition-colors duration-300 ${isActive ? 'text-[#EF7D25]' : 'text-gray-400 group-hover:text-gray-600'}`}>
+                            <span className={`text-app-xl md:text-app-3xl font-bold transition-colors duration-300 ${isActive ? 'text-primary' : 'text-gray-400 group-hover:text-gray-600'}`}>
                               {service.id}
                             </span>
-                            <h3 className="text-xl pb-2 pr-2 md:text-2xl lg:text-xl xl:text-3xl font-bold tracking-tight">
+                            <h3 className="text-app-xl pb-2 pr-2 md:text-app-2xl lg:text-app-xl xl:text-app-3xl font-bold tracking-tight">
                               {service.title}
                             </h3>
                           </div>
@@ -163,7 +163,7 @@ export default function Services() {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -10 }}
-                                className="hidden lg:flex items-center gap-2 text-sm font-medium hover:text-[#EF7D25] transition-colors whitespace-nowrap"
+                                className="hidden lg:flex items-center gap-2 text-app-sm font-medium hover:text-primary transition-colors whitespace-nowrap"
                               >
                                 Read More <ArrowRight className="w-4 h-4" />
                               </motion.div>
@@ -181,7 +181,7 @@ export default function Services() {
                               className="overflow-hidden"
                             >
                               <div className="pt-3 md:pt-4 pl-[3rem] md:pl-[4.5rem] pr-4 md:pr-4 pb-2 max-h-none lg:max-h-[60px] xl:max-h-none overflow-y-auto custom-scrollbar">
-                                <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg">
+                                <p className="text-gray-300 text-app-sm md:text-app-base leading-relaxed max-w-lg">
                                   {service.description}
                                 </p>
                               </div>

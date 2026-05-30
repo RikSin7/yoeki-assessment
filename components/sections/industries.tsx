@@ -58,17 +58,17 @@ export default function Industries() {
     };
 
     return (
-        <section className="bg-white">
+        <section className="w-full bg-white">
 
             {/* Mobile Pre-Scroll Header (Scrolls away) */}
-            <div className="lg:hidden max-w-[1600px] mx-auto px-6 w-full pt-20 pb-8 text-left shrink-0">
-                <h4 className="text-[#EF7D25] font-semibold text-sm uppercase tracking-wider mb-2">
+            <div className="lg:hidden max-w-[1440px] mx-auto px-6 md:px-12 w-full pt-20 pb-8 text-left shrink-0">
+                <h4 className="text-primary font-semibold text-app-sm uppercase tracking-wider mb-2">
                     Industries
                 </h4>
-                <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-3">
+                <h2 className="text-app-3xl md:text-app-4xl font-bold text-black tracking-tight mb-3">
                     Transforming Industries with Cutting-Edge Innovation
                 </h2>
-                <p className="text-gray-600 text-sm md:text-base max-w-3xl">
+                <p className="text-gray-600 text-app-sm md:text-app-base max-w-3xl">
                     At Indium, we pride ourselves in driving growth and delivering high-value solutions with unwavering commitment to the unique needs of every industry we serve.
                 </p>
             </div>
@@ -85,19 +85,19 @@ export default function Industries() {
                         className="w-full flex flex-col h-full justify-center"
                     >
                         {/* CHANGED to grid-cols-12 to allow custom width ratios */}
-                        <div className="max-w-[1600px] mx-auto w-full h-full lg:h-[700px] flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-12 items-center px-6 lg:px-12">
+                        <div className="max-w-[1440px] mx-auto w-full h-full lg:h-[700px] flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-12 items-center px-6 lg:px-12">
 
                             {/* Desktop Left Static Content */}
                             <div className="hidden lg:flex w-full flex-col justify-center px-4 lg:px-0 lg:pr-8 h-full lg:col-span-5">
-                                <h4 className="text-[#EF7D25] font-semibold text-base uppercase tracking-wider mb-4">
+                                <h4 className="text-primary font-semibold text-app-base uppercase tracking-wider mb-4">
                                     Industries
                                 </h4>
-                                <h2 className="text-3xl lg:text-4xl xl:text-[2.75rem] font-bold text-black tracking-tight mb-6 leading-[1.2]">
+                                <h2 className="text-app-4xl font-bold text-black tracking-tight mb-6 leading-[1.2]">
                                     Transforming Industries<br />
                                     with Cutting-Edge<br />
                                     Innovation
                                 </h2>
-                                <p className="text-gray-600 text-lg max-w-lg leading-relaxed">
+                                <p className="text-gray-600 text-app-lg max-w-lg leading-relaxed">
                                     At Indium, we pride ourselves in driving growth and delivering high-value solutions with unwavering commitment to the unique needs of every industry we serve.
                                 </p>
                             </div>
@@ -138,13 +138,13 @@ export default function Industries() {
 
                                             {/* Content Area */}
                                             <div className="flex flex-col flex-1 justify-end">
-                                                <h3 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                                                <h3 className="text-white text-app-3xl md:text-app-4xl font-bold tracking-tight mb-4">
                                                     {INDUSTRIES_DATA[activeIndex].title}
                                                 </h3>
-                                                <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-8 lg:max-w-md">
+                                                <p className="text-gray-300 text-app-sm md:text-app-base leading-relaxed mb-8 lg:max-w-md">
                                                     {INDUSTRIES_DATA[activeIndex].description}
                                                 </p>
-                                                <div className="flex items-center gap-2 text-[#EF7D25] text-sm md:text-base font-medium transition-colors w-max cursor-pointer group">
+                                                <div className="flex items-center gap-2 text-primary text-app-sm md:text-app-base font-medium transition-colors w-max cursor-pointer group">
                                                     Read More <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                                                 </div>
                                             </div>
@@ -156,7 +156,7 @@ export default function Industries() {
                                         {INDUSTRIES_DATA.map((_, i) => (
                                             <div
                                                 key={i}
-                                                className={`w-[2px] transition-all duration-500 rounded-full ${i === activeIndex ? 'h-10 bg-[#EF7D25]' : 'h-6 bg-white/20'}`}
+                                                className={`w-[2px] transition-all duration-500 rounded-full ${i === activeIndex ? 'h-10 bg-primary' : 'h-6 bg-white/20'}`}
                                             />
                                         ))}
                                     </div>
@@ -167,7 +167,7 @@ export default function Industries() {
                                             {INDUSTRIES_DATA.map((_, i) => (
                                                 <div
                                                     key={i}
-                                                    className={`h-[3px] flex-1 transition-colors duration-500 rounded-full ${i === activeIndex ? 'bg-[#EF7D25]' : 'bg-white/10'}`}
+                                                    className={`h-[3px] flex-1 transition-colors duration-500 rounded-full ${i === activeIndex ? 'bg-primary' : 'bg-white/10'}`}
                                                 />
                                             ))}
                                         </div>

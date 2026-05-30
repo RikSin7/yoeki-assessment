@@ -42,24 +42,24 @@ const INSIGHTS_DATA = [
 
 export default function Insights() {
   return (
-    <section className="bg-white py-16 md:px-12 relative overflow-hidden">
+    <section className="w-full bg-white py-16 relative overflow-hidden">
 
       {/* Optional: Subtle decorative background dots */}
-      <div className="absolute top-40 left-0 w-64 h-64 bg-[radial-gradient(#EF7D25_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-      <div className="absolute bottom-40 right-0 w-96 h-96 bg-[radial-gradient(#EF7D25_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
+      <div className="absolute top-40 left-0 w-64 h-64 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
+      <div className="absolute bottom-40 right-0 w-96 h-96 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
       {/* Header Section */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-10 lg:mb-12 relative z-10">
-        <h2 className="text-3xl lg:text-4xl font-bold text-black tracking-tight mb-3 leading-tight">
+      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 mb-10 lg:mb-12 relative z-10">
+        <h2 className="text-app-4xl font-bold text-black tracking-tight mb-3 leading-tight">
           Fresh Takes and Insights
         </h2>
-        <p className="text-gray-500 text-sm md:text-base max-w-2xl">
+        <p className="text-gray-500 text-app-sm md:text-app-base max-w-2xl">
           Decoding trends, one byte of knowledge at a time.
         </p>
       </div>
 
       {/* Grid Content */}
-      <div className="max-w-[1600px] mx-auto px-6 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
           {INSIGHTS_DATA.map((insight) => (
             <div
@@ -79,17 +79,17 @@ export default function Insights() {
               {/* Text Content */}
               <div className="px-5 py-6 md:py-4 lg:px-6 flex flex-col justify-between flex-1">
                 <div>
-                  <h3 className="text-lg font-bold text-black mb-1.5 leading-[1.25] tracking-tight line-clamp-2">
+                  <h3 className="text-app-lg font-bold text-black mb-1.5 leading-[1.25] tracking-tight line-clamp-2">
                     {insight.title}
                   </h3>
 
-                  <p className="text-gray-500 text-[13px] md:text-sm leading-relaxed mb-3 line-clamp-2">
+                  <p className="text-gray-500 text-app-xs md:text-app-sm leading-relaxed mb-3 line-clamp-2">
                     {insight.description}
                   </p>
                 </div>
 
                 {/* Read More Button */}
-                <div className="flex items-center gap-2 text-[#EF7D25] text-sm font-medium w-max cursor-pointer group mt-auto">
+                <div className="flex items-center gap-2 text-primary text-app-sm font-medium w-max cursor-pointer group mt-auto">
                   Read More
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>

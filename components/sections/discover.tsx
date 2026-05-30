@@ -34,7 +34,7 @@ export default function Discover() {
       <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] bg-[radial-gradient(#EF7D25_1.5px,transparent_1.5px)] [background-size:20px_20px] opacity-[0.35] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_60%)]" />
 
       {/* Main Container */}
-      <div className="max-w-[1600px] mx-auto px-6 md:px-18 relative z-10 flex flex-col items-center">
+      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
 
         {/* Header Image  */}
         <div className="relative w-[280px] md:w-[320px] h-[110px] mb-12">
@@ -66,10 +66,10 @@ export default function Discover() {
 
               {/* Card Text Content */}
               <div className="p-6 md:p-8 flex flex-col flex-1 text-left">
-                <h3 className="text-white font-bold text-lg md:text-xl mb-3 tracking-tight">
+                <h3 className="text-white font-bold text-app-lg md:text-app-xl mb-3 tracking-tight">
                   {card.title}
                 </h3>
-                <p className="text-gray-300 text-[15px] leading-relaxed">
+                <p className="text-gray-300 text-app-sm md:text-app-base leading-relaxed">
                   {card.description}
                 </p>
               </div>
@@ -79,12 +79,12 @@ export default function Discover() {
 
         {/* Animated Custom Button */}
         <button
-          className="group relative flex items-center justify-between bg-[#F18435] p-1 rounded-full w-[260px] h-[54px] cursor-pointer border-none outline-none"
+          className="group relative flex items-center justify-between bg-primary p-1 rounded-full w-[260px] h-[54px] cursor-pointer border-none outline-none"
         >
           <div className="absolute right-1 top-1 bottom-1 w-[46px] bg-black rounded-full transition-all duration-500 ease-out group-hover:w-[calc(100%-8px)] pointer-events-none" />
 
           {/* Button Text */}
-          <span className="relative z-10 pl-7 text-[15px] font-semibold text-black group-hover:text-white transition-colors duration-500 whitespace-nowrap">
+          <span className="relative z-10 pl-7 text-app-base font-semibold text-black group-hover:text-white transition-colors duration-500 whitespace-nowrap">
             Discover iXie Gaming
           </span>
 

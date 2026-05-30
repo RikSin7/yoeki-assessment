@@ -21,8 +21,9 @@ export default function ContactForm() {
     // ---------- SUCCESS STATE ----------
     if (status === "succeeded") {
         return (
-            <section className="bg-black min-h-[calc(100vh-6rem)] py-20 px-4 flex justify-center font-sans">
-                <div className="max-w-2xl w-full text-center">
+            <section className="w-full bg-black min-h-[calc(100vh-6rem)] py-20 flex justify-center font-sans">
+                <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex justify-center">
+                    <div className="max-w-2xl w-full text-center">
                     <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
@@ -38,14 +39,16 @@ export default function ContactForm() {
                     </p>
                     <Button onClick={resetForm}>Send Another Message</Button>
                 </div>
+              </div>
             </section>
         );
     }
 
     // ---------- FORM STATE ----------
     return (
-        <section className="bg-black min-h-[calc(100vh-6rem)] px-4 py-16 flex justify-center font-sans">
-            <div className="max-w-4xl w-full">
+        <section className="w-full bg-black min-h-[calc(100vh-6rem)] py-16 flex justify-center font-sans">
+            <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex justify-center">
+                <div className="max-w-4xl w-full">
                 {/* Section Heading */}
                 <SectionHeading
                     title="Infinite Possibilities Start with Indium"
@@ -126,7 +129,7 @@ export default function ContactForm() {
                                     key={option}
                                     className="flex items-center gap-3 cursor-pointer group"
                                 >
-                                    <div className="relative flex items-center justify-center w-5 h-5 border border-[#EF7D25] rounded-sm bg-transparent group-hover:bg-[#EF7D25]/10 transition-colors">
+                                    <div className="relative flex items-center justify-center w-5 h-5 border border-primary rounded-sm bg-transparent group-hover:bg-primary/10 transition-colors">
                                         <input
                                             type="radio"
                                             name="projectDate"
@@ -135,9 +138,9 @@ export default function ContactForm() {
                                             onChange={handleChange}
                                             className="sr-only peer"
                                         />
-                                        <div className="w-3 h-3 bg-[#EF7D25] rounded-sm opacity-0 peer-checked:opacity-100 transition-opacity" />
+                                        <div className="w-3 h-3 bg-primary rounded-sm opacity-0 peer-checked:opacity-100 transition-opacity" />
                                     </div>
-                                    <span className="text-white text-sm font-medium">
+                                    <span className="text-white text-app-sm font-medium">
                                         {option}
                                     </span>
                                 </label>
@@ -173,7 +176,7 @@ export default function ContactForm() {
                                 name="hearAboutUs"
                                 value={formData.hearAboutUs}
                                 onChange={handleChange}
-                                className="w-full bg-[#111111] text-zinc-300 p-4 rounded-sm outline-none focus:ring-1 focus:ring-[#EF7D25] appearance-none cursor-pointer text-sm"
+                                className="w-full bg-[#111111] text-zinc-300 p-4 rounded-sm outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer text-app-sm"
                             >
                                 <option value="" disabled>
                                     --Please choose an option--
@@ -206,7 +209,7 @@ export default function ContactForm() {
 
                     {/* Consent Checkbox */}
                     <div className="flex items-start gap-4 pt-6 pb-4">
-                        <label className="relative flex items-center justify-center w-5 h-5 border border-[#EF7D25] rounded-sm bg-transparent mt-1 shrink-0 cursor-pointer">
+                        <label className="relative flex items-center justify-center w-5 h-5 border border-primary rounded-sm bg-transparent mt-1 shrink-0 cursor-pointer">
                             <input
                                 type="checkbox"
                                 name="consent"
@@ -215,7 +218,7 @@ export default function ContactForm() {
                                 className="absolute inset-0 opacity-0 cursor-pointer peer"
                             />
 
-                            <div className="w-3 h-3 bg-[#EF7D25] rounded-sm opacity-0 peer-checked:opacity-100 transition-opacity" />
+                            <div className="w-3 h-3 bg-primary rounded-sm opacity-0 peer-checked:opacity-100 transition-opacity" />
                         </label>
                         <p className="text-zinc-400 text-xs leading-relaxed max-w-3xl">
                             By providing your personal information (name, contact number, and
@@ -227,7 +230,7 @@ export default function ContactForm() {
                             please note that withdrawing consent may affect our ability to
                             provide you with the information or services you have requested.
                             For more details, please review our{" "}
-                            <a href="#" className="text-[#EF7D25] hover:underline">
+                            <a href="#" className="text-primary hover:underline">
                                 Privacy Policy
                             </a>{" "}
                             for Terms and Conditions.
@@ -256,6 +259,7 @@ export default function ContactForm() {
                     </div>
                 </form>
             </div>
+          </div>
         </section>
     );
 }

@@ -37,27 +37,27 @@ export default function Marquee() {
     <section ref={containerRef} className="relative h-[250vh] bg-black">
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden border-b border-white/[0.05]">
 
-        <div className="max-w-[1600px] w-full mx-auto px-6 flex flex-col items-center justify-center">
+        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex flex-col items-center justify-center">
 
           {/* Animated N */}
-            <motion.div
-              style={{ scale: nScale, opacity: nOpacity }}
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative flex items-center justify-center h-[280px] md:h-[360px] w-[280px] md:w-[360px] mx-auto z-10"
-            >
-              <div className="absolute w-[200px] h-[200px] rounded-full bg-[#FB851E]/15 blur-3xl -z-10" />
+          <motion.div
+            style={{ scale: nScale, opacity: nOpacity }}
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative flex items-center justify-center h-[280px] md:h-[360px] w-[280px] md:w-[360px] mx-auto z-10"
+          >
+            <div className="absolute w-[200px] h-[200px] rounded-full bg-primary/15 blur-3xl -z-10" />
 
-              {/* The Canvas  */}
-              <DotMatrixN />
-            </motion.div>
+            {/* The Canvas  */}
+            <DotMatrixN />
+          </motion.div>
 
           {/* Marquee Container */}
           <motion.div
             style={{ opacity: marqueeOpacity, y: marqueeY }}
             className="w-full mt-4"
           >
-            <h2 className="text-center text-white text-3xl md:text-4xl font-bold tracking-tight leading-none mb-16">
+            <h2 className="text-center text-white text-app-4xl font-bold tracking-tight leading-none mb-16">
               Brands that believe in us
             </h2>
 
