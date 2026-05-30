@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yoeki Assessment - Indium Clone
 
-## Getting Started
+A high-performance, modern web application built for the Yoeki Assessment. This project serves as a highly animated replica of the Indium website, showcasing advanced responsive design, scroll-triggered animations, and production-ready code architecture.
 
-First, run the development server:
+**Live Demo:** [https://indium-clone.vercel.app](https://indium-clone.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Features
+
+- **Next.js (App Router):** Leveraging the latest Next.js features for optimized routing and fast page loads.
+- **Tailwind CSS v4:** Fully customized design system with responsive typography and spacing tokens via CSS variables.
+- **Framer Motion Animations:** Smooth, 60fps scroll-triggered entrances, interactive hover states, and dynamic elements (e.g., Infinite Marquee, Spring-Up Sections).
+- **Mona Sans Typography:** Consistent, premium typographic hierarchy using the `@fontsource-variable/mona-sans` variable font.
+- **Redux Toolkit:** State management implemented for the Contact Form feature (`/contact`), complete with loading, success, and error handling states.
+- **Modular Component Architecture:** A strictly maintained directory structure for reusable UI components, layout sections, features, and custom hooks.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (React 19)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animation:** [Framer Motion](https://motion.dev/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **State Management:** [Redux Toolkit](https://redux-toolkit.js.org/) & React Redux
+- **API Requests:** [Axios](https://axios-http.com/)
+
+---
+
+## 📂 Project Structure
+
+```text
+├── app/                  # Next.js App Router pages and global layouts
+├── components/
+│   ├── layout/           # Global components (Navbar, Footer)
+│   ├── sections/         # Page-specific sections (Hero, Marquee, Spotlight, etc.)
+│   └── ui/               # Reusable modular UI elements (Button, Input, SectionHeading)
+├── features/             # Redux slices and feature-specific logic (e.g., Contact Form)
+├── hooks/                # Custom React hooks (useMediaQuery, useRedux, useContactForm)
+├── lib/                  # Utility functions (e.g., class name merging with `cn`)
+├── providers/            # React context and Redux providers
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Local Setup & Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Follow these steps to run the application locally on your machine.
 
-## Learn More
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) (v18.17 or higher) installed.
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Clone the repository
+```bash
+git clone <your-repository-url>
+cd yoeki-assessment
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Install Dependencies
+Using npm:
+```bash
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Run the Development Server
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+### 4. View the App
+Open your browser and navigate to:
+[http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Design System
+
+The application relies on a strictly defined design system located in `app/globals.css`. It uses Tailwind `@theme` properties to enforce consistency across:
+- **Colors:** Defined primary, secondary, and background tokens.
+- **Typography:** Custom fluid-like `text-app-*` classes for responsive font sizing.
+- **Layout Constraints:** All sections are wrapped in a standard `max-w-[1440px]` container to ensure perfect scaling across devices.
+
+## 🧹 Code Quality
+The codebase is fully typed with TypeScript and follows strict linting rules. All code has been optimized for maintainability and performance.

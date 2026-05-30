@@ -23,7 +23,7 @@ export default function ContactForm() {
         return (
             <section className="w-full bg-black min-h-[calc(100vh-6rem)] py-20 flex justify-center font-sans">
                 <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex justify-center">
-                    <div className="max-w-2xl w-full text-center">
+                    <div className="max-w-2xl w-full text-center flex flex-col items-center">
                     <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}

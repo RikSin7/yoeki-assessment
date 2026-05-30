@@ -2,8 +2,10 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'motion/react';
 import { InfinityCanvas } from '../ui/infinityCanvas';
+import { useRouter } from 'next/navigation';
 
 export default function Contact() {
+  const router = useRouter();
   return (
     <section className="relative min-h-screen bg-black flex flex-col items-center justify-start py-10 overflow-hidden text-center z-0">
 
@@ -32,7 +34,7 @@ export default function Contact() {
         </p>
 
         {/* Animated Custom Button */}
-        <Button className="w-[200px]">Contact</Button>
+        <Button className="w-[200px]" onClick={() => router.push("/contact")}>Contact</Button>
       </motion.div>
     </section>
   );

@@ -54,71 +54,72 @@ export default function SuccessStories() {
         transition={{ type: 'spring', stiffness: 80, damping: 15 }}
         className="w-full"
       >
-      <div className="text-center mb-8 md:mb-12 px-6">
-        <h4 className="text-primary font-bold text-app-base">
-          Success Stories
-        </h4>
-        <h2 className="text-app-3xl md:text-app-4xl font-semibold text-black tracking-tight">
-          Real Stories, Real Impact
-        </h2>
-      </div>
-
-      <div className="max-w-[1600px] mx-auto relative md:px-18">
-        <div
-          ref={scrollRef}
-          className="flex gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 lg:px-12 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none"
-        >
-          {SUCCESS_STORIES.map((story) => (
-            <div
-              key={story.id}
-              className="flex flex-col rounded-md lg:flex-row w-[90vw] md:w-[70vw] lg:w-[1000px] shrink-0 lg:snap-start overflow-hidden border border-gray-100/50"
-            >
-
-              <div className="relative w-full lg:w-1/2 aspect-video lg:aspect-auto shrink-0 overflow-hidden">
-                <Image
-                  src={story.image}
-                  alt={story.title}
-                  fill
-                  unoptimized
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="w-full lg:w-1/2 bg-[#F8F9FA] p-8 md:p-10 lg:p-14 flex flex-col justify-center">
-                <h3 className="text-xl lg:text-2xl font-bold text-black mb-4 leading-[1.3] tracking-tight">
-                  {story.title}
-                </h3>
-                <p className="text-gray-500 text-app-sm lg:text-[15px] leading-relaxed mb-8">
-                  {story.description}
-                </p>
-                <div className="flex items-center gap-2 text-[#EF7D25] text-sm font-medium transition-all w-max cursor-pointer group">
-                  Read More
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </div>
-              </div>
-
-            </div>
-          ))}
+        <div className="text-center mb-8 md:mb-12 px-6">
+          <h4 className="text-primary font-bold text-app-base">
+            Success Stories
+          </h4>
+          <h2 className="text-app-3xl md:text-app-4xl font-semibold text-black tracking-tight">
+            Real Stories, Real Impact
+          </h2>
         </div>
-      </div>
 
-      {/* 4. Navigation Controls */}
-      <div className="flex items-center justify-center gap-4 mt-6">
-        <button
-          onClick={() => scroll('left')}
-          className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
-          aria-label="Previous story"
-        >
-          <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:text-white" />
-        </button>
-        <button
-          onClick={() => scroll('right')}
-          className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
-          aria-label="Next story"
-        >
-          <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
-        </button>
-      </div>
+        <div className="max-w-[1600px] mx-auto relative md:px-18">
+          <div
+            ref={scrollRef}
+            className="flex gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 lg:px-12 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none items-stretch"
+          >
+            {SUCCESS_STORIES.map((story) => (
+              <div
+                key={story.id}
+                className="flex flex-col rounded-md lg:flex-row w-[90vw] md:w-[70vw] lg:w-[1000px] shrink-0 lg:snap-start overflow-hidden border border-gray-100/50 h-auto"
+              >
+
+                <div className="relative w-full lg:w-1/2 min-h-[250px] lg:min-h-0 shrink-0 overflow-hidden">
+                  <Image
+                    src={story.image}
+                    alt={story.title}
+                    fill
+                    unoptimized
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="w-full lg:w-1/2 bg-[#F8F9FA] p-8 md:p-10 lg:p-14 flex flex-col justify-center flex-1">
+                  <h3 className="text-xl lg:text-2xl font-bold text-black mb-4 leading-[1.3] tracking-tight">
+                    {story.title}
+                  </h3>
+                  <p className="text-gray-500 text-app-sm lg:text-[15px] leading-relaxed mb-8">
+                    {story.description}
+                  </p>
+
+                  <div className="flex items-center gap-2 text-[#EF7D25] text-sm font-medium transition-all w-max cursor-pointer group mt-auto">
+                    Read More
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Navigation Controls */}
+        <div className="flex items-center justify-center gap-4 mt-6">
+          <button
+            onClick={() => scroll('left')}
+            className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
+            aria-label="Previous story"
+          >
+            <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:text-white" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
+            aria-label="Next story"
+          >
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
+          </button>
+        </div>
       </motion.div>
     </section>
   );

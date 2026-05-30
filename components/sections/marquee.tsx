@@ -54,7 +54,7 @@ export default function Marquee() {
               duration: 1.2,
               ease: [0.16, 1, 0.3, 1]
             }}
-            className="relative flex items-center justify-center h-[240px] md:h-[320px] w-[240px] md:w-[320px] mx-auto z-10"
+            className="relative flex items-center justify-center h-[350px] w-[350px] mx-auto z-10"
           >
             {/* Ambient Orange Glow behind the N */}
             <div className="absolute w-[200px] h-[200px] rounded-full bg-[#EF7D25]/20 blur-[80px] -z-10 animate-pulse" />
@@ -75,16 +75,13 @@ export default function Marquee() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full mt-8 md:mt-12"
+            className="w-full"
           >
-            <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-12 lg:mb-16 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+            <h2 className="text-center text-app-4xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-white">
               Brands that believe in us
             </h2>
 
             <div className="relative overflow-hidden w-full py-4">
-              <div className="absolute left-0 top-0 w-32 md:w-48 h-full bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 w-32 md:w-48 h-full bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
-
               <motion.div
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
@@ -93,14 +90,14 @@ export default function Marquee() {
                 {[...logos, ...logos].map((logo, index) => (
                   <div
                     key={index}
-                    className="relative shrink-0 h-[50px] md:h-[60px] flex items-center justify-center overflow-hidden w-[140px] md:w-[180px] group"
+                    className="relative shrink-0 h-[60px] md:h-[80px] flex items-center justify-center overflow-hidden w-[180px] md:w-[250px] group"
                   >
                     <Image
                       src={logo}
                       alt="Partner Brand Logo"
-                      width={200}
-                      height={100}
-                      className="object-contain filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 cursor-pointer"
+                      width={250} 
+                      height={120} 
+                      className="object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 cursor-pointer"
                     />
                   </div>
                 ))}
