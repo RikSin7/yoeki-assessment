@@ -1,35 +1,38 @@
 'use client';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const DISCOVER_CARDS = [
   {
     title: 'Game QA',
     description: 'Your players demand perfection. So do we.',
-    image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b7738?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1593118247619-e2d6f056869e?auto=format&fit=crop&q=80&w=800',
+    link: '#',
   },
   {
     title: 'Game Development',
     description: 'Built for performance. Designed for players.',
-    image: 'https://images.unsplash.com/photo-1605901309584-818e25960b8f?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80&w=800',
+    link: '#',
   },
   {
     title: 'Specialized Services',
     description: 'Smart Decisions for big wins.',
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&q=80&w=800',
+    link: '#',
   },
   {
     title: 'Game Art & Animation',
     description: 'We turn your vision into reality.',
-    image: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
+    link: '#',
   }
 ];
-
 export default function Discover() {
   return (
     <section className="bg-white py-16 relative overflow-hidden">
 
-      {/* Decorative Background Dots (Simulating the orange splatter) */}
+      {/* Decorative Background Dots */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-96 h-96 bg-[radial-gradient(#EF7D25_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-[0.35] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
       <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] bg-[radial-gradient(#EF7D25_1.5px,transparent_1.5px)] [background-size:20px_20px] opacity-[0.35] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_60%)]" />
 
@@ -54,7 +57,7 @@ export default function Discover() {
               className="flex flex-col bg-[#363636] rounded-none overflow-hidden"
             >
               {/* Card Image */}
-              <div className="relative w-full aspect-[4/3] md:aspect-[16/11]">
+              <div className="relative w-full aspect-6/3 md:aspect-16/11">
                 <Image
                   src={card.image}
                   alt={card.title}
@@ -78,22 +81,7 @@ export default function Discover() {
         </div>
 
         {/* Animated Custom Button */}
-        <button
-          className="group relative flex items-center justify-between bg-primary p-1 rounded-full w-[260px] h-[54px] cursor-pointer border-none outline-none"
-        >
-          <div className="absolute right-1 top-1 bottom-1 w-[46px] bg-black rounded-full transition-all duration-500 ease-out group-hover:w-[calc(100%-8px)] pointer-events-none" />
-
-          {/* Button Text */}
-          <span className="relative z-10 pl-7 text-app-base font-semibold text-black group-hover:text-white transition-colors duration-500 whitespace-nowrap">
-            Discover iXie Gaming
-          </span>
-
-          {/* Arrow Icon Circle */}
-          <div className="relative z-10 flex items-center justify-center w-[46px] h-[46px] bg-black rounded-full shrink-0">
-            <ArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-0.5" />
-          </div>
-        </button>
-
+        <Button className="w-[260px]">Discover iXie Gaming</Button>
       </div>
     </section>
   );

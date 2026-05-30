@@ -25,10 +25,9 @@ const INSIGHTS_DATA = [
     link: '#',
   },
   {
-    id: 4,
-    title: 'Optimizing Mutation Testing with Gen AI',
-    description: 'Discover how generative AI models are revolutionizing mutation testing by automatically generating intelligent, context-aware test cases that challenge your source code far better than traditional randomized mutations.',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756ded8dd?auto=format&fit=crop&q=80&w=800',
+    title: 'Game Art & Animation',
+    description: 'We turn your vision into reality.',
+    image: 'https://plus.unsplash.com/premium_photo-1731901688112-fde70a8768e8?q=80&w=1096&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     link: '#',
   },
   {
@@ -50,7 +49,7 @@ export default function Insights() {
 
       {/* Header Section */}
       <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 mb-10 lg:mb-12 relative z-10">
-        <h2 className="text-app-4xl font-bold text-black tracking-tight mb-3 leading-tight">
+        <h2 className="text-app-4xl font-semibold text-black tracking-tight mb-3 leading-tight">
           Fresh Takes and Insights
         </h2>
         <p className="text-gray-500 text-app-sm md:text-app-base max-w-2xl">

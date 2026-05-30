@@ -1,5 +1,5 @@
 'use client';
-import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { InfinityCanvas } from '../ui/infinityCanvas';
 
 export default function Contact() {
@@ -25,22 +25,7 @@ export default function Contact() {
         </p>
 
         {/* Animated Custom Button */}
-        <button
-          className="group relative flex items-center justify-between bg-[#F18435] p-1 rounded-full w-[200px] h-[54px] cursor-pointer border-none outline-none shadow-[0_0_40px_rgba(241,132,53,0.3)] hover:shadow-[0_0_60px_rgba(241,132,53,0.5)] transition-shadow duration-500"
-        >
-          <div className="absolute right-1 top-1 bottom-1 w-[46px] bg-black rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-[calc(100%-8px)] pointer-events-none" />
-
-          {/* Button Text */}
-          <span className="relative z-10 pl-8 pr-4 text-[15px] font-semibold text-black group-hover:text-white transition-colors duration-500 whitespace-nowrap">
-            Contact
-          </span>
-
-          {/* Arrow Icon Circle */}
-          <div className="relative z-10 flex items-center justify-center w-[46px] h-[46px] bg-black rounded-full shrink-0">
-            <ArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-0.5" />
-          </div>
-        </button>
-
+        <Button className="w-[200px]">Contact</Button>
       </div>
     </section>
   );

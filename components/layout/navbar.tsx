@@ -48,7 +48,7 @@ export default function Navbar() {
               alt="Yoeki Logo"
               width={180}
               height={180}
-              className="w-24 md:w-36 min-[1200px]:w-[180px] h-auto transition-all"
+              className="w-23 md:w-36 min-[1200px]:w-[180px] h-auto transition-all"
             />
           </div>
 
@@ -66,14 +66,14 @@ export default function Navbar() {
 
           {/* 3. Right Action Area */}
           <div className="flex items-center gap-4">
-            <Button onClick={() => router.push('/contact')}>Contact Us</Button>
+            <Button onClick={() => router.push('/contact')} className='ml-2'>Contact Us</Button>
 
             <button
               className="min-[1200px]:hidden text-white p-1 hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Toggle Menu"
             >
-              <Menu className="w-8 h-8" />
+              <Menu className="w-7 h-7" />
             </button>
           </div>
         </div>

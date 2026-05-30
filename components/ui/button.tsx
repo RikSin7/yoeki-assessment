@@ -5,19 +5,26 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
 }
 
-export const Button = ({ children, isLoading, disabled, ...props }: ButtonProps) => {
+export const Button = ({ children, isLoading, disabled, className = "", ...props }: ButtonProps) => {
   return (
     <button
       disabled={isLoading || disabled}
-      className={`relative inline-flex items-center justify-center gap-4 bg-[#EF7D25] text-black font-medium py-2 pl-6 pr-2 rounded-full transition-all hover:bg-[#d86a1c] active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed`}
+      className={`group relative flex items-center justify-between bg-primary p-1 rounded-full w-max min-w-[180px] h-[50px] cursor-pointer border-none outline-none disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-500 ${className}`}
       {...props}
     >
-      <span className="text-sm font-semibold">{isLoading ? 'Processing...' : children}</span>
-      <div className="bg-black rounded-full p-2 flex items-center justify-center">
+      <div className="absolute right-1 top-1 bottom-1 w-[46px] bg-black rounded-full transition-all duration-500 ease-out group-hover:w-[calc(100%-8px)] pointer-events-none group-disabled:hidden" />
+
+      {/* Button Text */}
+      <span className="relative z-10 pl-6 pr-4 text-app-sm md:text-app-base font-semibold text-black group-hover:text-white transition-colors duration-500 whitespace-nowrap flex-1 text-center">
+        {isLoading ? 'Processing...' : children}
+      </span>
+
+      {/* Arrow Icon Circle */}
+      <div className="relative z-10 flex items-center justify-center w-[46px] h-[46px] bg-black rounded-full shrink-0">
         {isLoading ? (
-          <Loader2 className="w-4 h-4 text-white animate-spin" />
+          <Loader2 className="w-5 h-5 text-white animate-spin" />
         ) : (
-          <ArrowRight className="w-4 h-4 text-white" />
+          <ArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-0.5" />
         )}
       </div>
     </button>

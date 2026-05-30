@@ -103,7 +103,7 @@ export default function Industries() {
                             </div>
 
                             <div className="w-full lg:mt-22 h-full flex items-center justify-center lg:col-span-7">
-                                <div className="w-full h-full max-h-[500px] md:max-h-[600px] bg-[#111111] overflow-hidden flex flex-col shadow-2xl relative transform-gpu">
+                                <div className="w-full h-full max-h-[500px] md:max-h-[600px] bg-[#111111] overflow-hidden flex flex-col relative transform-gpu">
 
                                     <AnimatePresence mode="wait">
                                         <motion.div

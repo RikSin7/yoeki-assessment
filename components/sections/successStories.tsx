@@ -22,7 +22,7 @@ const SUCCESS_STORIES = [
     id: 3,
     title: 'Automating Supply Chain Quality Engineering for a Global Retail Giant',
     description: 'Implemented end-to-end continuous testing pipelines and smart workflows, reducing deployment times by 40% while ensuring 99.9% defect-free releases across all consumer touchpoints.',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://plus.unsplash.com/premium_photo-1681010317789-68f31df3b9b0?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     link: '#',
   }
 ];
@@ -45,13 +45,13 @@ export default function SuccessStories() {
   };
 
   return (
-    <section className="bg-white py-20 lg:py-32 overflow-hidden">
+    <section className="bg-white pt-8 md:pt-16 overflow-hidden">
 
-      <div className="text-center mb-12 lg:mb-16 px-6">
-        <h4 className="text-[#EF7D25] font-bold text-sm uppercase tracking-widest mb-3">
+      <div className="text-center mb-8 md:mb-12 px-6">
+        <h4 className="text-primary font-bold text-app-base">
           Success Stories
         </h4>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black tracking-tight">
+        <h2 className="text-app-3xl md:text-app-4xl font-semibold text-black tracking-tight">
           Real Stories, Real Impact
         </h2>
       </div>
@@ -64,10 +64,10 @@ export default function SuccessStories() {
           {SUCCESS_STORIES.map((story) => (
             <div
               key={story.id}
-              className="flex flex-col rounded-md lg:flex-row w-[90vw] md:w-[70vw] lg:w-[1000px] shrink-0 snap-start overflow-hidden border border-gray-100/50"
+              className="flex flex-col rounded-md lg:flex-row w-[90vw] md:w-[70vw] lg:w-[1000px] shrink-0 lg:snap-start overflow-hidden border border-gray-100/50"
             >
 
-              <div className="relative w-full lg:w-1/2 aspect-video lg:aspect-auto lg:h-[380px] shrink-0 overflow-hidden">
+              <div className="relative w-full lg:w-1/2 aspect-video lg:aspect-auto shrink-0 overflow-hidden">
                 <Image
                   src={story.image}
                   alt={story.title}
@@ -81,7 +81,7 @@ export default function SuccessStories() {
                 <h3 className="text-xl lg:text-2xl font-bold text-black mb-4 leading-[1.3] tracking-tight">
                   {story.title}
                 </h3>
-                <p className="text-gray-500 text-sm lg:text-[15px] leading-relaxed mb-8">
+                <p className="text-gray-500 text-app-sm lg:text-[15px] leading-relaxed mb-8">
                   {story.description}
                 </p>
                 <div className="flex items-center gap-2 text-[#EF7D25] text-sm font-medium transition-all w-max cursor-pointer group">
