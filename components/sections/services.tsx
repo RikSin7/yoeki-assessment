@@ -78,9 +78,9 @@ export default function Services() {
       </div>
 
       <div ref={sectionRef} className="relative h-[400vh]">
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-4 lg:py-16">
 
-          {/* Spring-Up Entry Animation Wrapper */}
+        <div className="sticky top-14 md:top-28 lg:top-8 h-screen md:h-[calc(100vh-6rem)] lg:h-screen w-full overflow-hidden flex flex-col justify-center md:justify-start lg:justify-center py-4 md:pt-4 lg:py-16">
+
           <motion.div
             initial={{ y: 150, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -111,7 +111,7 @@ export default function Services() {
                     animate="animate"
                     exit="exit"
                     transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-                    className="relative w-full max-w-[500px] h-full lg:aspect-square flex items-center justify-center rounded-2xl overflow-hidden lg:shadow-2xl"
+                    className="relative w-full max-w-[500px] h-full lg:aspect-square flex items-center justify-center overflow-hidden lg:shadow-2xl"
                   >
                     <Image
                       src={SERVICES_DATA[activeIndex].image}
@@ -120,7 +120,7 @@ export default function Services() {
                       unoptimized
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-tr from-black/20 to-transparent" />
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -132,11 +132,11 @@ export default function Services() {
                   const showOnMobile = isActive || isNext;
 
                   return (
-                    <div key={service.id} className={`relative cursor-pointer group ${showOnMobile ? 'block' : 'hidden lg:block'}`}>
+                    <div key={service.id} className={`relative xl:min-w-[47vw] cursor-pointer group ${showOnMobile ? 'block' : 'hidden lg:block'}`}>
                       {isActive && (
                         <motion.div
                           layoutId="activeServiceBg"
-                          className="absolute inset-0 lg:inset-auto lg:top-0 lg:bottom-0 lg:left-auto lg:right-0 w-full lg:w-[100vw] bg-[#111111] z-0 rounded-2xl lg:rounded-none transform-gpu"
+                          className="absolute inset-0 lg:inset-auto lg:top-0 lg:bottom-0 lg:left-auto lg:right-0 w-full lg:w-[100vw] bg-[#111111] z-0 lg:rounded-none transform-gpu"
                           initial={false}
                           transition={{ type: 'spring', stiffness: 250, damping: 30 }}
                         />
@@ -152,7 +152,7 @@ export default function Services() {
                             <span className={`text-xl md:text-3xl font-bold transition-colors duration-300 ${isActive ? 'text-[#EF7D25]' : 'text-gray-400 group-hover:text-gray-600'}`}>
                               {service.id}
                             </span>
-                            <h3 className="text-xl md:text-3xl font-bold tracking-tight">
+                            <h3 className="text-xl pb-2 pr-2 md:text-2xl lg:text-xl xl:text-3xl font-bold tracking-tight">
                               {service.title}
                             </h3>
                           </div>
@@ -163,7 +163,7 @@ export default function Services() {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -10 }}
-                                className="hidden lg:flex items-center gap-2 text-sm font-medium hover:text-[#EF7D25] transition-colors"
+                                className="hidden lg:flex items-center gap-2 text-sm font-medium hover:text-[#EF7D25] transition-colors whitespace-nowrap"
                               >
                                 Read More <ArrowRight className="w-4 h-4" />
                               </motion.div>
@@ -180,7 +180,7 @@ export default function Services() {
                               transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                               className="overflow-hidden"
                             >
-                              <div className="pt-3 md:pt-4 pl-[3rem] md:pl-[4.5rem] pr-4 md:pr-0 pb-1">
+                              <div className="pt-3 md:pt-4 pl-[3rem] md:pl-[4.5rem] pr-4 md:pr-4 pb-2 max-h-none lg:max-h-[60px] xl:max-h-none overflow-y-auto custom-scrollbar">
                                 <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg">
                                   {service.description}
                                 </p>
@@ -195,8 +195,8 @@ export default function Services() {
                   );
                 })}
               </div>
-            </div>
 
+            </div>
           </motion.div>
         </div>
       </div>
