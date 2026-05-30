@@ -81,7 +81,7 @@ export default function Industries() {
                     <motion.div
                         initial={{ y: 150, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true, amount: 0.1 }}
+                        viewport={{ once: false, amount: 0.1 }}
                         transition={{ type: 'spring', stiffness: 80, damping: 15 }}
                         className="w-full flex flex-col h-full lg:justify-center"
                     >

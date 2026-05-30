@@ -1,5 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import { motion } from 'motion/react';
 import { InfinityCanvas } from '../ui/infinityCanvas';
 
 export default function Contact() {
@@ -12,7 +13,13 @@ export default function Contact() {
         <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black pointer-events-none" />
       </div>
 
-      <div className="relative z-10 px-6 max-w-4xl mx-auto flex flex-col items-center">
+      <motion.div
+        initial={{ y: 150, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: false, amount: 0.1 }}
+        transition={{ type: 'spring', stiffness: 80, damping: 15 }}
+        className="relative z-10 px-6 max-w-4xl mx-auto flex flex-col items-center"
+      >
 
         <h2 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-6 leading-tight">
           Explore Infinite<br />
@@ -26,7 +33,7 @@ export default function Contact() {
 
         {/* Animated Custom Button */}
         <Button className="w-[200px]">Contact</Button>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -88,12 +88,18 @@ export default function Spotlight() {
 
   return (
     <section className="w-full bg-black py-24 md:py-32 border-b border-white/[0.05] overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <motion.div
+        initial={{ y: 150, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: false, amount: 0.1 }}
+        transition={{ type: 'spring', stiffness: 80, damping: 15 }}
+        className="max-w-[1440px] mx-auto px-6 md:px-12"
+      >
         {/* Section Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-center text-white text-app-4xl font-bold tracking-tight mb-8 md:mb-16"
         >
           Spotlight
@@ -111,7 +117,7 @@ export default function Spotlight() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 key={item.id}
                 className="group cursor-pointer shrink-0 snap-start flex flex-col w-[85vw] md:w-[45vw] lg:w-[380px] xl:w-[420px]"
               >
@@ -164,7 +170,7 @@ export default function Spotlight() {
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
           </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

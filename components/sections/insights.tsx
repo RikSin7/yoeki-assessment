@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
 const INSIGHTS_DATA = [
@@ -47,56 +48,65 @@ export default function Insights() {
       <div className="absolute top-40 left-0 w-64 h-64 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
       <div className="absolute bottom-40 right-0 w-96 h-96 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
-      {/* Header Section */}
-      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 mb-10 lg:mb-12 relative z-10">
-        <h2 className="text-app-4xl font-semibold text-black tracking-tight mb-3 leading-tight">
-          Fresh Takes and Insights
-        </h2>
-        <p className="text-gray-500 text-app-sm md:text-app-base max-w-2xl">
-          Decoding trends, one byte of knowledge at a time.
-        </p>
-      </div>
-
-      {/* Grid Content */}
-      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
-          {INSIGHTS_DATA.map((insight) => (
-            <div
-              key={insight.id}
-              className="flex flex-col md:flex-row bg-[#F9FAFB] rounded-md overflow-hidden md:h-[200px] border border-gray-100/50"
-            >
-              <div className="relative w-full h-[250px] md:h-full md:w-[250px] shrink-0 overflow-hidden">
-                <Image
-                  src={insight.image}
-                  alt={insight.title}
-                  fill
-                  unoptimized
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Text Content */}
-              <div className="px-5 py-6 md:py-4 lg:px-6 flex flex-col justify-between flex-1">
-                <div>
-                  <h3 className="text-app-lg font-bold text-black mb-1.5 leading-[1.25] tracking-tight line-clamp-2">
-                    {insight.title}
-                  </h3>
-
-                  <p className="text-gray-500 text-app-xs md:text-app-sm leading-relaxed mb-3 line-clamp-2">
-                    {insight.description}
-                  </p>
-                </div>
-
-                {/* Read More Button */}
-                <div className="flex items-center gap-2 text-primary text-app-sm font-medium w-max cursor-pointer group mt-auto">
-                  Read More
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* Animated Content Wrapper */}
+      <motion.div
+        initial={{ y: 150, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: false, amount: 0.1 }}
+        transition={{ type: 'spring', stiffness: 80, damping: 15 }}
+        className="w-full"
+      >
+        {/* Header Section */}
+        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 mb-10 lg:mb-12 relative z-10">
+          <h2 className="text-app-4xl font-semibold text-black tracking-tight mb-3 leading-tight">
+            Fresh Takes and Insights
+          </h2>
+          <p className="text-gray-500 text-app-sm md:text-app-base max-w-2xl">
+            Decoding trends, one byte of knowledge at a time.
+          </p>
         </div>
-      </div>
+
+        {/* Grid Content */}
+        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
+            {INSIGHTS_DATA.map((insight) => (
+              <div
+                key={insight.id}
+                className="flex flex-col md:flex-row bg-[#F9FAFB] rounded-md overflow-hidden md:h-[200px] border border-gray-100/50"
+              >
+                <div className="relative w-full h-[250px] md:h-full md:w-[250px] shrink-0 overflow-hidden">
+                  <Image
+                    src={insight.image}
+                    alt={insight.title}
+                    fill
+                    unoptimized
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Text Content */}
+                <div className="px-5 py-6 md:py-4 lg:px-6 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="text-app-lg font-bold text-black mb-1.5 leading-[1.25] tracking-tight line-clamp-2">
+                      {insight.title}
+                    </h3>
+
+                    <p className="text-gray-500 text-app-xs md:text-app-sm leading-relaxed mb-3 line-clamp-2">
+                      {insight.description}
+                    </p>
+                  </div>
+
+                  {/* Read More Button */}
+                  <div className="flex items-center gap-2 text-primary text-app-sm font-medium w-max cursor-pointer group mt-auto">
+                    Read More
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
 
     </section>
   );

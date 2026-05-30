@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 
 const DISCOVER_CARDS = [
@@ -37,7 +38,13 @@ export default function Discover() {
       <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] bg-[radial-gradient(#EF7D25_1.5px,transparent_1.5px)] [background-size:20px_20px] opacity-[0.35] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_60%)]" />
 
       {/* Main Container */}
-      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
+      <motion.div
+        initial={{ y: 150, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: false, amount: 0.1 }}
+        transition={{ type: 'spring', stiffness: 80, damping: 15 }}
+        className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center"
+      >
 
         {/* Header Image  */}
         <div className="relative w-[280px] md:w-[320px] h-[110px] mb-12">
@@ -82,7 +89,7 @@ export default function Discover() {
 
         {/* Animated Custom Button */}
         <Button className="w-[260px]">Discover iXie Gaming</Button>
-      </div>
+      </motion.div>
     </section>
   );
 }

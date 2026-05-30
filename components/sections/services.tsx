@@ -69,7 +69,7 @@ export default function Services() {
         <h4 className="text-primary font-bold text-app-sm mb-2">
           Services
         </h4>
-            <h2 className="text-app-3xl md:text-app-4xl font-bold text-black tracking-tight leading-8 mb-3">
+        <h2 className="text-app-3xl md:text-app-4xl font-bold text-black tracking-tight leading-8 mb-3">
           Crafting success through our expertise in AI
         </h2>
         <p className="text-gray-600 text-app-sm md:text-app-base max-w-3xl mx-auto">
@@ -84,7 +84,7 @@ export default function Services() {
           <motion.div
             initial={{ y: 150, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: false, amount: 0.1 }}
             transition={{ type: 'spring', stiffness: 80, damping: 15 }}
             className="w-full flex flex-col h-full lg:h-auto justify-center"
           >
