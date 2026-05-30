@@ -94,7 +94,7 @@ export default function Spotlight() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-white text-app-4xl font-bold tracking-tight mb-16"
+          className="text-center text-white text-app-4xl font-bold tracking-tight mb-8 md:mb-16"
         >
           Spotlight
         </motion.h2>
@@ -148,23 +148,20 @@ export default function Spotlight() {
         </div>
 
         {/* 4. Navigation Controls */}
-        <div className="flex items-center justify-center gap-4 mt-8">
+        <div className="flex items-center justify-center gap-4 mt-6">
           <button
             onClick={() => scroll('left')}
-            disabled={!canScrollLeft}
-            className="w-14 h-14 rounded-full bg-[#f4f4f5] flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 disabled:cursor-not-allowed"
-            aria-label="Previous slide"
+            className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
+            aria-label="Previous story"
           >
-            <ArrowLeft className="w-6 h-6 text-black" />
+            <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:text-white" />
           </button>
-
           <button
             onClick={() => scroll('right')}
-            disabled={!canScrollRight}
-            className="w-14 h-14 rounded-full bg-[#f4f4f5] flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 disabled:cursor-not-allowed"
-            aria-label="Next slide"
+            className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
+            aria-label="Next story"
           >
-            <ArrowRight className="w-6 h-6 text-black" />
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
           </button>
         </div>
       </div>

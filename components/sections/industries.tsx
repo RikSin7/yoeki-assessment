@@ -74,7 +74,8 @@ export default function Industries() {
             </div>
 
             <div ref={sectionRef} className="relative h-[500vh]">
-                <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-4 lg:py-0">
+
+                <div className="sticky top-16 md:top-24 lg:top-0 h-[calc(100vh-4rem)] md:h-[calc(100vh-6rem)] lg:h-screen w-full overflow-hidden flex flex-col justify-start lg:justify-center py-4 lg:py-0">
 
                     {/* Spring-Up Entry Animation Wrapper */}
                     <motion.div
@@ -82,10 +83,9 @@ export default function Industries() {
                         whileInView={{ y: 0, opacity: 1 }}
                         viewport={{ once: true, amount: 0.1 }}
                         transition={{ type: 'spring', stiffness: 80, damping: 15 }}
-                        className="w-full flex flex-col h-full justify-center"
+                        className="w-full flex flex-col h-full lg:justify-center"
                     >
-                        {/* CHANGED to grid-cols-12 to allow custom width ratios */}
-                        <div className="max-w-[1440px] mx-auto w-full h-full lg:h-[700px] flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-12 items-center px-6 lg:px-12">
+                        <div className="max-w-[1440px] mx-auto w-full h-full lg:h-[900px] flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-12 items-center px-6 lg:px-12">
 
                             {/* Desktop Left Static Content */}
                             <div className="hidden lg:flex w-full flex-col justify-center px-4 lg:px-0 lg:pr-8 h-full lg:col-span-5">
@@ -102,9 +102,8 @@ export default function Industries() {
                                 </p>
                             </div>
 
-                            {/* Right Side Black Box */}
-                            <div className="w-full mt-22 h-[calc(100%-2rem)] lg:h-full flex items-center justify-center lg:col-span-7">
-                                <div className="w-full h-full max-h-[600px] bg-[#111111] overflow-hidden flex flex-col shadow-2xl relative transform-gpu">
+                            <div className="w-full lg:mt-22 h-full flex items-center justify-center lg:col-span-7">
+                                <div className="w-full h-full max-h-[500px] md:max-h-[600px] bg-[#111111] overflow-hidden flex flex-col shadow-2xl relative transform-gpu">
 
                                     <AnimatePresence mode="wait">
                                         <motion.div
@@ -116,7 +115,7 @@ export default function Industries() {
                                             className="flex flex-col w-full h-full p-6 md:p-12 lg:p-16 pb-20 justify-between pr-12 lg:pr-16"
                                         >
                                             {/* Image Area with Mirrored Flip */}
-                                            <div className="relative w-full h-[45%] lg:h-[55%] min-h-[200px] flex items-center justify-center mt-4 mb-8 perspective-[1500px]">
+                                            <div className="relative w-full h-[45%] lg:h-[55%] min-h-[180px] md:min-h-[250px] lg:min-h-[200px] flex items-center justify-center mt-4 mb-6 md:mb-8 perspective-[1500px]">
                                                 <motion.div
                                                     key={`img-${activeIndex}`}
                                                     variants={imageVariants}
@@ -131,17 +130,17 @@ export default function Industries() {
                                                         alt={INDUSTRIES_DATA[activeIndex].title}
                                                         fill
                                                         unoptimized
-                                                        className="object-contain filter opacity-80"
+                                                        className="object-cover filter opacity-90"
                                                     />
                                                 </motion.div>
                                             </div>
 
                                             {/* Content Area */}
                                             <div className="flex flex-col flex-1 justify-end">
-                                                <h3 className="text-white text-app-3xl md:text-app-4xl font-bold tracking-tight mb-4">
+                                                <h3 className="text-white text-app-3xl md:text-app-4xl font-bold tracking-tight mb-3 md:mb-4">
                                                     {INDUSTRIES_DATA[activeIndex].title}
                                                 </h3>
-                                                <p className="text-gray-300 text-app-sm md:text-app-base leading-relaxed mb-8 lg:max-w-md">
+                                                <p className="text-gray-300 text-app-sm md:text-app-base leading-relaxed mb-6 md:mb-8 lg:max-w-md line-clamp-3">
                                                     {INDUSTRIES_DATA[activeIndex].description}
                                                 </p>
                                                 <div className="flex items-center gap-2 text-primary text-app-sm md:text-app-base font-medium transition-colors w-max cursor-pointer group">
@@ -152,11 +151,11 @@ export default function Industries() {
                                     </AnimatePresence>
 
                                     {/* Mobile Vertical Progress Bar */}
-                                    <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-10 lg:hidden">
+                                    <div className="absolute right-4 md:right-6 bottom-20 flex flex-col gap-2 z-10 lg:hidden">
                                         {INDUSTRIES_DATA.map((_, i) => (
                                             <div
                                                 key={i}
-                                                className={`w-[2px] transition-all duration-500 rounded-full ${i === activeIndex ? 'h-10 bg-primary' : 'h-6 bg-white/20'}`}
+                                                className={`w-[3px] transition-all duration-500 rounded-full ${i === activeIndex ? 'h-10 bg-primary' : 'h-6 bg-white/20'}`}
                                             />
                                         ))}
                                     </div>

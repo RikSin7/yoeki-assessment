@@ -65,11 +65,11 @@ export default function Services() {
   return (
     <section className="bg-white w-full">
       {/* Mobile Pre-Scroll Header */}
-      <div className="lg:hidden max-w-[1440px] mx-auto px-6 md:px-12 w-full pt-20 pb-8 text-center shrink-0">
-        <h4 className="text-primary font-semibold text-app-sm uppercase tracking-wider mb-2">
+      <div className="lg:hidden max-w-[1440px] mx-auto px-6 md:px-12 w-full py-8 text-center shrink-0">
+        <h4 className="text-primary font-bold text-app-sm mb-2">
           Services
         </h4>
-        <h2 className="text-app-3xl md:text-app-4xl font-bold text-black tracking-tight mb-3">
+            <h2 className="text-app-3xl md:text-app-4xl font-bold text-black tracking-tight leading-8 mb-3">
           Crafting success through our expertise in AI
         </h2>
         <p className="text-gray-600 text-app-sm md:text-app-base max-w-3xl mx-auto">
@@ -89,7 +89,7 @@ export default function Services() {
             className="w-full flex flex-col h-full lg:h-auto justify-center"
           >
             <div className="hidden lg:block max-w-[1440px] mx-auto px-6 lg:px-12 w-full mb-12 text-center shrink-0">
-              <h4 className="text-primary font-semibold text-app-base uppercase tracking-wider mb-2">
+              <h4 className="text-primary font-semibold text-app-base tracking-wider mb-2">
                 Services
               </h4>
               <h2 className="text-app-4xl font-bold text-black tracking-tight mb-3">

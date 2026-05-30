@@ -95,20 +95,21 @@ export default function SuccessStories() {
         </div>
       </div>
 
+      {/* 4. Navigation Controls */}
       <div className="flex items-center justify-center gap-4 mt-6">
         <button
           onClick={() => scroll('left')}
-          className="w-14 h-14 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
+          className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
           aria-label="Previous story"
         >
-          <ArrowLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:text-white" />
+          <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:text-white" />
         </button>
         <button
           onClick={() => scroll('right')}
-          className="w-14 h-14 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
+          className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
           aria-label="Next story"
         >
-          <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
+          <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
         </button>
       </div>
 

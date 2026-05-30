@@ -28,8 +28,9 @@ export default function Marquee() {
     restDelta: 0.001,
   });
 
-  const nScale = useTransform(smoothProgress, [0, 0.15, 0.7, 1], [0.05, 1, 1, 0.8]);
+  const nScale = useTransform(smoothProgress, [0, 0.15, 1, 1], [0.1, 1, 1, 0.8]);
   const nOpacity = useTransform(smoothProgress, [0, 0.05, 0.8, 1], [0, 1, 1, 0]);
+
   const marqueeOpacity = useTransform(smoothProgress, [0, 0.1, 0.2, 0.8, 1], [0, 0, 1, 1, 0]);
   const marqueeY = useTransform(smoothProgress, [0, 0.1, 0.2], [40, 40, 0]);
 
@@ -63,8 +64,8 @@ export default function Marquee() {
 
             <div className="relative overflow-hidden w-full">
               {/* Gradient Fades  */}
-              <div className="absolute left-0 top-0 w-24 md:w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 w-24 md:w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+              <div className="absolute left-0 top-0 w-24 md:w-32 h-full bg-linear-to-r from-black to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 w-24 md:w-32 h-full bg-linear-to-l from-black to-transparent z-10 pointer-events-none" />
 
               {/* Infinite Logo Track */}
               <motion.div
@@ -75,7 +76,7 @@ export default function Marquee() {
                 {[...logos, ...logos].map((logo, index) => (
                   <div
                     key={index}
-                    className="relative shrink-0 h-[60px] flex items-center justify-center overflow-hidden"
+                    className="relative shrink-0 h-[60px] flex items-center justify-center overflow-hidden md:w-auto max-w-[180px]"
                   >
                     <Image
                       src={logo}
