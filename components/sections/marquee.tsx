@@ -23,67 +23,84 @@ export default function Marquee() {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 20,
+    stiffness: 100,
+    damping: 25,
     restDelta: 0.001,
   });
 
-  const nScale = useTransform(smoothProgress, [0, 0.15, 1, 1], [0.1, 1, 1, 0.8]);
-  const nOpacity = useTransform(smoothProgress, [0, 0.05, 0.8, 1], [0, 1, 1, 0]);
-
-  const marqueeOpacity = useTransform(smoothProgress, [0, 0.1, 0.2, 0.8, 1], [0, 0, 1, 1, 0]);
-  const marqueeY = useTransform(smoothProgress, [0, 0.1, 0.2], [40, 40, 0]);
+  // Scroll progress
+  const sectionScale = useTransform(smoothProgress, [0, 0.6, 1], [1, 1, 0.85]);
+  const sectionOpacity = useTransform(smoothProgress, [0, 0.7, 1], [1, 1, 0]);
 
   return (
-    <section ref={containerRef} className="relative h-[250vh] bg-black">
+    <section ref={containerRef} className="relative h-[150vh] bg-[#050505]">
+
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden border-b border-white/[0.05]">
 
-        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex flex-col items-center justify-center">
+        {/* Subtle background grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
-          {/* Animated N */}
+        <motion.div
+          style={{ scale: sectionScale, opacity: sectionOpacity }}
+          className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex flex-col items-center justify-center relative z-10"
+        >
+
+          {/* Animated N  */}
           <motion.div
-            style={{ scale: nScale, opacity: nOpacity }}
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative flex items-center justify-center h-[280px] md:h-[360px] w-[280px] md:w-[360px] mx-auto z-10"
+            initial={{ opacity: 0, scale: 0.15, filter: "blur(20px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1]
+            }}
+            className="relative flex items-center justify-center h-[240px] md:h-[320px] w-[240px] md:w-[320px] mx-auto z-10"
           >
-            <div className="absolute w-[200px] h-[200px] rounded-full bg-primary/15 blur-3xl -z-10" />
+            {/* Ambient Orange Glow behind the N */}
+            <div className="absolute w-[200px] h-[200px] rounded-full bg-[#EF7D25]/20 blur-[80px] -z-10 animate-pulse" />
 
-            {/* The Canvas  */}
-            <DotMatrixN />
+            {/* Continuous gentle floating animation */}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-full h-full"
+            >
+              <DotMatrixN />
+            </motion.div>
           </motion.div>
 
           {/* Marquee Container */}
           <motion.div
-            style={{ opacity: marqueeOpacity, y: marqueeY }}
-            className="w-full mt-4"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full mt-8 md:mt-12"
           >
-            <h2 className="text-center text-white text-app-4xl font-bold tracking-tight leading-none mb-16">
+            <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-12 lg:mb-16 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
               Brands that believe in us
             </h2>
 
-            <div className="relative overflow-hidden w-full">
-              {/* Gradient Fades  */}
-              <div className="absolute left-0 top-0 w-24 md:w-32 h-full bg-linear-to-r from-black to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 w-24 md:w-32 h-full bg-linear-to-l from-black to-transparent z-10 pointer-events-none" />
+            <div className="relative overflow-hidden w-full py-4">
+              <div className="absolute left-0 top-0 w-32 md:w-48 h-full bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 w-32 md:w-48 h-full bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
 
-              {/* Infinite Logo Track */}
               <motion.div
                 animate={{ x: ["0%", "-50%"] }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="flex w-max gap-10 md:gap-20"
+                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                className="flex w-max gap-12 md:gap-24 items-center"
               >
                 {[...logos, ...logos].map((logo, index) => (
                   <div
                     key={index}
-                    className="relative shrink-0 h-[60px] flex items-center justify-center overflow-hidden md:w-auto max-w-[180px]"
+                    className="relative shrink-0 h-[50px] md:h-[60px] flex items-center justify-center overflow-hidden w-[140px] md:w-[180px] group"
                   >
                     <Image
                       src={logo}
-                      alt="Logo"
-                      width={250}
-                      height={250}
-                      className="object-contain filter opacity-60 hover:opacity-100 hover:brightness-100 transition-all duration-500 cursor-pointer"
+                      alt="Partner Brand Logo"
+                      width={200}
+                      height={100}
+                      className="object-contain filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 cursor-pointer"
                     />
                   </div>
                 ))}
@@ -91,7 +108,7 @@ export default function Marquee() {
             </div>
           </motion.div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );

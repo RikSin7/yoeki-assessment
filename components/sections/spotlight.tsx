@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -57,25 +57,6 @@ const SPOTLIGHT_DATA = [
 
 export default function Spotlight() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  // 2. Scroll Logic & Boundary Detection
-  const checkScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      // Subtracting 1px for safe rounding decimals on high-DPI screens
-      setCanScrollRight(Math.ceil(scrollLeft) < scrollWidth - clientWidth - 1);
-    }
-  };
-
-  useEffect(() => {
-    checkScroll();
-    window.addEventListener('resize', checkScroll);
-    return () => window.removeEventListener('resize', checkScroll);
-  }, []);
-
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       // Scroll by exactly one card width + gap (approx) based on viewport size
@@ -109,7 +90,6 @@ export default function Spotlight() {
         <div className="relative w-full">
           <div
             ref={scrollRef}
-            onScroll={checkScroll}
             className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {SPOTLIGHT_DATA.map((item, index) => (
@@ -157,14 +137,14 @@ export default function Spotlight() {
         <div className="flex items-center justify-center gap-4 mt-6">
           <button
             onClick={() => scroll('left')}
-            className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
+            className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group outline-none border-none"
             aria-label="Previous story"
           >
             <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:text-white" />
           </button>
           <button
             onClick={() => scroll('right')}
-            className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group"
+            className="md:w-14 md:h-14 w-11 h-11 rounded-full bg-[#EFEAE3] hover:bg-black flex items-center justify-center text-black/70 transition-colors group outline-none border-none"
             aria-label="Next story"
           >
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />

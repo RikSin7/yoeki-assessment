@@ -26,6 +26,7 @@ const INSIGHTS_DATA = [
     link: '#',
   },
   {
+    id: 4,
     title: 'Game Art & Animation',
     description: 'We turn your vision into reality.',
     image: 'https://plus.unsplash.com/premium_photo-1731901688112-fde70a8768e8?q=80&w=1096&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -43,10 +44,6 @@ const INSIGHTS_DATA = [
 export default function Insights() {
   return (
     <section className="w-full bg-white py-16 relative overflow-hidden">
-
-      {/* Optional: Subtle decorative background dots */}
-      <div className="absolute top-40 left-0 w-64 h-64 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-      <div className="absolute bottom-40 right-0 w-96 h-96 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.15] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
       {/* Animated Content Wrapper */}
       <motion.div

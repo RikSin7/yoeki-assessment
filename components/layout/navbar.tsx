@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-full h-24 bg-navbar fixed top-0 left-0 right-0 z-40 border-b border-white/5">
+      <nav className="w-full h-24 bg-navbar fixed top-0 left-0 right-0 z-40">
         <div className="max-w-[1440px] mx-auto w-full h-full flex items-center justify-between px-6 md:px-12 relative">
           {/* 1. Logo */}
           <div className="shrink-0 cursor-pointer flex items-center" onClick={() => router.push("/")}>
